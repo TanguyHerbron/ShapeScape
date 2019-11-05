@@ -10,6 +10,7 @@
         private float speed;
         private bool invicible = false;
         private bool damaged = false;
+        private string name;
 
         /***
             GETTERS AND SETTERS
@@ -77,6 +78,18 @@
             set
             {
                 damaged= value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
             }
         }
 
