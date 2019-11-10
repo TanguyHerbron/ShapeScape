@@ -2,11 +2,11 @@
 {
     public class Ennemy : Character
     {
-        // Start is called before the first frame update
-        public Ennemy(string ennemyName, float ennemyHP)
+        public Ennemy(string ennemyName, float ennemyHP, float ennemySpeed)
         {
             this.Name = ennemyName;
             this.HP = ennemyHP;
+            this.Speed = ennemySpeed;
         }
     }
 }
