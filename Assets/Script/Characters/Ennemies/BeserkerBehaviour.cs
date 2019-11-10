@@ -10,10 +10,12 @@ public class BeserkerBehaviour: MonoBehaviour
     private Vector3 ennemyPosition;
     private Vector3 playerPosition;
 
+    public float beserkerSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
-        ennemy = new Ennemy("Beserker", 5);
+        ennemy = new Ennemy("Beserker", 5, beserkerSpeed);
 
         // Init of the rotation and position of a ennemy
         playerPosition = GameObject.Find("Player").transform.position;
@@ -27,6 +29,7 @@ public class BeserkerBehaviour: MonoBehaviour
         if (ennemy.IsDead())
         {
             StopMoving();
+            Destroy(this.gameObject);
         }
         else
         {
@@ -66,5 +69,17 @@ public class BeserkerBehaviour: MonoBehaviour
     {
         transform.position = transform.position;
         transform.rotation = transform.rotation;
+    }
+
+    /// <summary>
+    /// Temporary : Kills the berserker
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            ennemy.Kill();
+        }
     }
 }
