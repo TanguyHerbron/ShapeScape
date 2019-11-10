@@ -153,7 +153,10 @@
             target.HP  -= damage;
         }
 
-
+        public void Kill()
+        {
+            this.hp = 0;
+        }
 
 
     }
