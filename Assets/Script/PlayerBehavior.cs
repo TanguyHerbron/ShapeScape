@@ -10,7 +10,7 @@ public class PlayerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = new Player("Test", 5);
+        player = new Player("Test", 5, 5);
     }
 
     // Update is called once per frame
@@ -43,5 +43,10 @@ public class PlayerBehavior : MonoBehaviour
         player.Invicible = true;
         yield return new WaitForSeconds(1);
         player.Invicible = false;
+    }
+
+    public Player GetPlayer()
+    {
+        return player;
     }
 }
