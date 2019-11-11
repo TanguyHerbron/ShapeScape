@@ -36,6 +36,8 @@ public class TerrainConstructor : MonoBehaviour
 
     public int corridorSize = 1;
 
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +47,9 @@ public class TerrainConstructor : MonoBehaviour
 
         DrawRooms();
 
-        DrawCorridors();
+        Vector2Int spawnPos = DrawCorridors();
+
+        Instantiate(player, new Vector3(spawnPos.x, spawnPos.y), Quaternion.identity);
     }
 
     private void GenerateRooms()
@@ -108,7 +112,7 @@ public class TerrainConstructor : MonoBehaviour
         }
     }
 
-    private void DrawCorridors()
+    private Vector2Int DrawCorridors()
     {
         List<Vector2Int> roomCenters = new List<Vector2Int>();
 
@@ -150,17 +154,19 @@ public class TerrainConstructor : MonoBehaviour
                     start.y++;
                 }
 
-                int offset = Mathf.RoundToInt(5 * Mathf.PerlinNoise(start.x / 8f, start.y / 8f));
+                int offset = Mathf.RoundToInt(10 * Mathf.PerlinNoise(start.x / 8f, start.y / 8f) / 2);
 
                 for (int x = start.x - corridorSize; x < start.x + corridorSize; x++)
                 {
                     for (int y = start.y - corridorSize; y < start.y + corridorSize; y++)
                     {
-                        ground.SetTile(new Vector3Int(x + offset, y - offset, 0), groundTile);
-                        borders.SetTile(new Vector3Int(x + offset, y - offset, 0), null);
+                        ground.SetTile(new Vector3Int(x + offset, y - offset / 2, 0), groundTile);
+                        borders.SetTile(new Vector3Int(x + offset, y - offset / 2, 0), null);
                     }
                 }
             }
         }
+
+        return roomCenters[0];
     }
 }

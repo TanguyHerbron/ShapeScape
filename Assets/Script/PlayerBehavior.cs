@@ -47,6 +47,11 @@ public class PlayerBehavior : MonoBehaviour
 
     public Player GetPlayer()
     {
+        if(player == null)
+        {
+            player = new Player("Test", 5, 5);
+        }
+
         return player;
     }
 }
