@@ -9,15 +9,15 @@ public class PlayerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = new Character("Test", 5, 5);
+        player = new Character("Test", 6, 5);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    
+
     /// <summary>
     /// Collision detector
     /// Checks if the object colliding with the player should or not apply damage
