@@ -12,6 +12,8 @@ public class BeserkerBehaviour: MonoBehaviour
 
     public float beserkerSpeed;
 
+    private ParticleSystem particleSystemm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,10 @@ public class BeserkerBehaviour: MonoBehaviour
         if (beserker.IsDead())
         {
             StopMoving();
-            Destroy(this.gameObject);
+            if(!GetComponent<ParticleSystem>().IsAlive())
+            {
+                Destroy(this);
+            }
         }
         else
         {
@@ -79,6 +84,8 @@ public class BeserkerBehaviour: MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<ParticleSystem>().Play();
             beserker.Kill();
         }
     }
