@@ -1,9 +1,9 @@
-﻿namespace Assets.Characters
+﻿namespace Assets.Entities
 {
     /// <summary>
     /// Abstract class for every characters in the game
     /// </summary>
-    public abstract class Character
+    public abstract class Entity
     {
         private int id;
         private float hp;

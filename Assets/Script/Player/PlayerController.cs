@@ -1,11 +1,9 @@
-﻿using Assets.Characters;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Entities;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Player player;
+    private Character player;
     private Rigidbody2D rb;
 
     private Vector2 movement;

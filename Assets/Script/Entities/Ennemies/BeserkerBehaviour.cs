@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.Characters.Ennemies;
+using Assets.Entities;
 
 public class BeserkerBehaviour: MonoBehaviour
 {
-    private Ennemy ennemy;
+    private Character beserker;
 
     private Vector3 ennemyPosition;
     private Vector3 playerPosition;
@@ -15,18 +15,18 @@ public class BeserkerBehaviour: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ennemy = new Ennemy("Beserker", 5, beserkerSpeed);
+        beserker = new Character("Beserker", 5, beserkerSpeed);
 
         // Init of the rotation and position of a ennemy
         playerPosition = GameObject.Find("Player").transform.position;
-        MoveTo(playerPosition, ennemy.Speed);
+        MoveTo(playerPosition, beserker.Speed);
     }
 
     // Update is called once per frame
     void Update()
     {
         // Stops the ennemies depending on their state
-        if (ennemy.IsDead())
+        if (beserker.IsDead())
         {
             StopMoving();
             Destroy(this.gameObject);
@@ -35,7 +35,7 @@ public class BeserkerBehaviour: MonoBehaviour
         {
             // Update of the rotation and position of a ennemy
             playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-            MoveTo(playerPosition, ennemy.Speed);
+            MoveTo(playerPosition, beserker.Speed);
         }
     }
 
@@ -43,9 +43,9 @@ public class BeserkerBehaviour: MonoBehaviour
     /// Accessor for the ennemy
     /// </summary>
     /// <returns>the current bear</returns>
-    public Ennemy GetEnnemy()
+    public Character GetEnnemy()
     {
-        return ennemy;
+        return beserker;
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class BeserkerBehaviour: MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            ennemy.Kill();
+            beserker.Kill();
         }
     }
 }

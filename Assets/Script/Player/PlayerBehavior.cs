@@ -1,16 +1,15 @@
-﻿using Assets.Characters;
+﻿using Assets.Entities;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private Player player;
+    private Character player;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = new Player("Test", 5, 5);
+        player = new Character("Test", 5, 5);
     }
 
     // Update is called once per frame
@@ -45,11 +44,11 @@ public class PlayerBehavior : MonoBehaviour
         player.Invicible = false;
     }
 
-    public Player GetPlayer()
+    public Character GetPlayer()
     {
         if(player == null)
         {
-            player = new Player("Test", 5, 5);
+            player = new Character("Test", 5, 5);
         }
 
         return player;
