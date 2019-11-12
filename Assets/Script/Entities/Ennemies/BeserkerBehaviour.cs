@@ -18,7 +18,7 @@ public class BeserkerBehaviour: MonoBehaviour
         beserker = new Character("Beserker", 5, beserkerSpeed);
 
         // Init of the rotation and position of a ennemy
-        playerPosition = GameObject.Find("Player").transform.position;
+        playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         MoveTo(playerPosition, beserker.Speed);
     }
 
