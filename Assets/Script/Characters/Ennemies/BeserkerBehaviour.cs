@@ -34,7 +34,7 @@ public class BeserkerBehaviour: MonoBehaviour
         else
         {
             // Update of the rotation and position of a ennemy
-            playerPosition = GameObject.Find("Player").transform.position;
+            playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
             MoveTo(playerPosition, ennemy.Speed);
         }
     }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 961610534742077642}
   m_Layer: 0
   m_Name: Beserker
-  m_TagString: Player
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 99
   m_Sprite: {fileID: 7810193000123994671, guid: cbfaf6c5b7324e64e8ca826f61b16d54,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
