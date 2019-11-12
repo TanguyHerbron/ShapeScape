@@ -18,6 +18,11 @@ public class HandManager : MonoBehaviour
 
             oldWeapon = weapon;
         }
+
+        if(weapon.GetComponentInChildren<TrailRenderer>())
+        {
+            weapon.GetComponentInChildren<TrailRenderer>().enabled = weapon.GetComponent<Animator>().GetBool("Swing");
+        }
     }
 
     public void attack()
