@@ -11,13 +11,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
 
     public bool attacking;
-    public Animator swordAnimator;
+    private HandManager hand;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<PlayerBehavior>().GetPlayer();
-        swordAnimator = GetComponentInChildren<Animator>();
+        hand = GetComponent<HandManager>();
     }
 
     // Update is called once per frame
@@ -26,9 +26,9 @@ public class PlayerController : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        if ( Input.GetMouseButtonDown(0) )
+        if (Input.GetMouseButtonDown(0) || Input.GetAxisRaw("Fire1") != 0)
         {
-            swordAnimator.SetTrigger("Swing");
+            hand.attack();
         }
     }
 
