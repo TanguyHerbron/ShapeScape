@@ -19,6 +19,9 @@ public class BeserkerBehaviour: MonoBehaviour
     {
         beserker = new Character("Beserker", 5, beserkerSpeed);
 
+
+        GetComponent<ParticleSystem>().Stop();
+
         // Init of the rotation and position of a ennemy
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         MoveTo(playerPosition, beserker.Speed);
@@ -80,9 +83,9 @@ public class BeserkerBehaviour: MonoBehaviour
     /// Temporary : Kills the berserker
     /// </summary>
     /// <param name="collision"></param>
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Melee Weapon"))
         {
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<ParticleSystem>().Play();
