@@ -37,6 +37,7 @@ public class TerrainConstructor : MonoBehaviour
     public int corridorSize = 1;
 
     public GameObject player;
+    List<Vector2Int> roomCenters;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +50,17 @@ public class TerrainConstructor : MonoBehaviour
 
         Vector2Int spawnPos = DrawCorridors();
 
+        DrawCenters();
+
         Instantiate(player, new Vector3(spawnPos.x, spawnPos.y), Quaternion.identity);
+    }
+
+    private void DrawCenters()
+    {
+        foreach(Vector2Int center in roomCenters)
+        {
+            ground.SetTile(new Vector3Int(center.x, center.y, 0), redTile);
+        }
     }
 
     private void GenerateRooms()
@@ -114,7 +125,7 @@ public class TerrainConstructor : MonoBehaviour
 
     private Vector2Int DrawCorridors()
     {
-        List<Vector2Int> roomCenters = new List<Vector2Int>();
+        List<Vector2Int> corridorEndpoints = new List<Vector2Int>();
 
         for(int x = 0; x < roomList.GetLength(0); x++)
         {
@@ -122,17 +133,19 @@ public class TerrainConstructor : MonoBehaviour
             {
                 if(roomList[x, y] != null)
                 {
-                    roomCenters.Add(new Vector2Int(x * maxRoomWidth + maxRoomWidth / 2, y * maxRoomHeight + maxRoomHeight / 2));
+                    corridorEndpoints.Add(new Vector2Int(x * maxRoomWidth + maxRoomWidth / 2, y * maxRoomHeight + maxRoomHeight / 2));
                 }
             }
         }
 
-        while(roomCenters.Count > 1)
-        {
-            Vector2Int start = roomCenters[Random.Range(0, roomCenters.Count)];
-            roomCenters.Remove(start);
+        roomCenters = new List<Vector2Int>(corridorEndpoints);
 
-            Vector2Int destination = roomCenters[Random.Range(0, roomCenters.Count)];
+        while(corridorEndpoints.Count > 1)
+        {
+            Vector2Int start = corridorEndpoints[Random.Range(0, corridorEndpoints.Count)];
+            corridorEndpoints.Remove(start);
+
+            Vector2Int destination = corridorEndpoints[Random.Range(0, corridorEndpoints.Count)];
 
             while (start != destination)
             {
@@ -167,6 +180,6 @@ public class TerrainConstructor : MonoBehaviour
             }
         }
 
-        return roomCenters[0];
+        return corridorEndpoints[0];
     }
 }
