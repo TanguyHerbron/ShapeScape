@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -58,6 +58,19 @@ public class TerrainConstructor : MonoBehaviour
         }
 
         Instantiate(player, new Vector3(spawnPos.x, spawnPos.y), Quaternion.identity);
+    }
+
+    private void SpawnRoomCollider(int x, int y, Room room)
+    {
+        GameObject colliderObject = new GameObject();
+        colliderObject.name = x + "," + y;
+        BoxCollider2D collider = colliderObject.AddComponent<BoxCollider2D>();
+        collider.size = new Vector2(room.tiles.GetLength(0), room.tiles.GetLength(1));
+        collider.isTrigger = true;
+
+        colliderObject.transform.position = new Vector3(x * maxRoomWidth + room.tiles.GetLength(0) / 2, y * maxRoomHeight + room.tiles.GetLength(1) / 2);
+
+        colliderObject.transform.parent = transform;
     }
 
     private void DrawCenters()
@@ -125,6 +138,11 @@ public class TerrainConstructor : MonoBehaviour
                             borders.SetTile(new Vector3Int(xTile + x * maxRoomWidth, yTile + y * maxRoomHeight, 0), borderTile);
                         }
                     }
+                }
+
+                if(roomList[x, y] != null)
+                {
+                    SpawnRoomCollider(x, y, roomList[x, y]);
                 }
             }
         }
