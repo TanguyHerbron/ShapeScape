@@ -33,6 +33,18 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        RoomSpawn spawn = GameObject.Find("Grid").GetComponent<RoomSpawn>();
+
+        string[] coords = collision.name.Split(',');
+
+        spawn.SpawnEnnemies(System.Convert.ToInt32(coords[0]), 
+                            System.Convert.ToInt32(coords[2]), 
+                            System.Convert.ToInt32(coords[1]), 
+                            System.Convert.ToInt32(coords[3]));
+    }
+
     /// <summary>
     /// Provides immunity to the player for one second
     /// By setting the immune boolean to true
