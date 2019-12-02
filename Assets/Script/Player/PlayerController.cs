@@ -22,9 +22,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<PlayerBehavior>().GetPlayer();
         hand = GetComponent<HandManager>();
-
-        positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
-        mouseOnScreen = (Vector2) Camera.main.ScreenToViewportPoint(Input.mousePosition);
     }
 
     void Update()
@@ -39,7 +36,9 @@ public class PlayerController : MonoBehaviour
         positionOnScreen = Camera.main.WorldToViewportPoint(rb.position);
         mouseOnScreen = (Vector2) Camera.main.ScreenToViewportPoint(Input.mousePosition);
         angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
-        rb.rotation =  angle;
+
+        // Adding 180 degrees allows the player to face the mouse and not turning it's back
+        rb.rotation =  angle + 180;
 
         // Checking for attacks
         if ( Input.GetMouseButtonDown(0) || Input.GetAxisRaw("Fire1") != 0 )
