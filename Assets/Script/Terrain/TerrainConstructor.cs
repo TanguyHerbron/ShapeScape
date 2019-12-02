@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -39,6 +39,8 @@ public class TerrainConstructor : MonoBehaviour
     public GameObject player;
     List<Vector2Int> roomCenters;
 
+    public bool drawRoomCenters = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +52,10 @@ public class TerrainConstructor : MonoBehaviour
 
         Vector2Int spawnPos = DrawCorridors();
 
-        DrawCenters();
+        if(drawRoomCenters)
+        {
+            DrawCenters();
+        }
 
         Instantiate(player, new Vector3(spawnPos.x, spawnPos.y), Quaternion.identity);
     }
@@ -77,6 +82,8 @@ public class TerrainConstructor : MonoBehaviour
 
     private void ArrangeRooms()
     {
+        const int maxRoomTries = 100;
+
         roomList = new Room[1 + rooms.Count / (rooms.Count / 2), 1 + rooms.Count / (rooms.Count / 2)];
 
         for (int i = 0; i < rooms.Count; i++)
@@ -86,14 +93,14 @@ public class TerrainConstructor : MonoBehaviour
             int values = roomList.GetLength(0) * roomList.GetLength(1);
             int index = Random.Range(0, values);
 
-            while(roomPlacementTries < 100)
+            while(roomPlacementTries < maxRoomTries)
             {
                 roomPlacementTries++;
 
                 if (roomList[index / roomList.GetLength(0), index % roomList.GetLength(1)] == null)
                 {
                     roomList[index / roomList.GetLength(0), index % roomList.GetLength(1)] = rooms[i];
-                    roomPlacementTries = 10;
+                    roomPlacementTries = maxRoomTries;
                 }
             }
         }
@@ -133,7 +140,7 @@ public class TerrainConstructor : MonoBehaviour
             {
                 if(roomList[x, y] != null)
                 {
-                    corridorEndpoints.Add(new Vector2Int(x * maxRoomWidth + maxRoomWidth / 2, y * maxRoomHeight + maxRoomHeight / 2));
+                    corridorEndpoints.Add(new Vector2Int(x * maxRoomWidth + roomList[x, y].tiles.GetLength(0) / 2, y * maxRoomHeight + roomList[x, y].tiles.GetLength(1) / 2));
                 }
             }
         }
