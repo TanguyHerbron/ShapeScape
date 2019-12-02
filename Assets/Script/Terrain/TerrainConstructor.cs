@@ -37,6 +37,7 @@ public class TerrainConstructor : MonoBehaviour
     public int corridorSize = 1;
 
     public GameObject player;
+    public GameObject ally;
     List<Vector2Int> roomCenters;
 
     public bool drawRoomCenters = false;
@@ -58,6 +59,7 @@ public class TerrainConstructor : MonoBehaviour
         }
 
         Instantiate(player, new Vector3(spawnPos.x, spawnPos.y), Quaternion.identity);
+        Instantiate(ally, new Vector3(spawnPos.x + Random.Range(1, 3), spawnPos.y + Random.Range(1, 3)), Quaternion.identity);
     }
 
     private void SpawnRoomCollider(int x, int y, Room room)
