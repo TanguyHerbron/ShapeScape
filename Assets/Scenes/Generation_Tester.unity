@@ -367,6 +367,7 @@ MonoBehaviour:
   randomFillPercentage: 35
   corridorSize: 2
   player: {fileID: 4900270296362051093, guid: fd5959d98984e8741b48f892ec3d5b6b, type: 3}
+  ally: {fileID: 4900270296362051093, guid: b94a154445a8ef74fa65008d687d257e, type: 3}
   drawRoomCenters: 0
 --- !u!156049354 &403251347
 Grid:
@@ -1144,7 +1145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c0b8b0c02c412e4f813d8e002c7c65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Player
+  targetTag: Ally
 --- !u!1 &2018634984
 GameObject:
   m_ObjectHideFlags: 0
