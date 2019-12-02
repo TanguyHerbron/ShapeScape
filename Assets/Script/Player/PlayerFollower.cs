@@ -6,6 +6,7 @@ public class PlayerFollower : MonoBehaviour
 {
     GameObject player = null;
     Vector3 velocity = Vector3.zero;
+    public string targetTag = "Player";
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class PlayerFollower : MonoBehaviour
     {
         if (player == null)
         {
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = GameObject.FindGameObjectWithTag(targetTag);
         }
 
         Vector3 target = player.transform.TransformPoint(new Vector3(0, 5, -10));

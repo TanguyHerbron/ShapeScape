@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public bool attacking;
     private HandManager hand;
 
+    private Vector2 oldMovement;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -48,7 +50,18 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * player.Speed * Time.fixedDeltaTime);
+        if(movement != oldMovement)
+        {
+            rb.velocity = Vector2.zero;
+            oldMovement = movement;
+        }
+
+        if (rb.velocity == Vector2.zero)
+        {
+            rb.AddForce(movement * player.Speed);
+        }
+
+        //rb.MovePosition(rb.position + movement * player.Speed * Time.fixedDeltaTime);
     }
 
     /// <summary>

@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     private Character player;
+    public int speed = 100;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = new Character("Test", 6, 5);
+        player = new Character("Test", 6, speed);
     }
 
     // Update is called once per frame
@@ -48,7 +49,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         if(player == null)
         {
-            player = new Character("Test", 5, 5);
+            player = new Character("Test", 5, speed);
         }
 
         return player;
