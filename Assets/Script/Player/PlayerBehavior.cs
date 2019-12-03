@@ -26,16 +26,28 @@ public class PlayerBehavior : MonoBehaviour
     /// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if ( (collision.gameObject.CompareTag("Melee Weapon") || collision.gameObject.CompareTag("Ennemy")) && !player.Invicible)
+        if((collision.gameObject.CompareTag("Melee Weapon") || collision.gameObject.CompareTag("Ennemy")) && !player.Invicible)
         {
             player.ApplyDamage(1);
-            StartCoroutine(Invicibility());
+
+            if(player.IsDead())
+            {
+                GameObject.Find("Canvas").transform.Find("DeathPanel").gameObject.SetActive(true);
+            } else
+            {
+                StartCoroutine(Invicibility());
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         RoomSpawn spawn = GameObject.Find("Grid").GetComponent<RoomSpawn>();
+
+        if(collision.name == "End")
+        {
+            GameObject.Find("Canvas").transform.Find("EndPanel").gameObject.SetActive(true);
+        }
 
         if(collision.name.Split(',').Length == 4)
         {

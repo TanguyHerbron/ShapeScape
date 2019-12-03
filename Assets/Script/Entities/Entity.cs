@@ -118,6 +118,11 @@
             {
                 damaged = true;
                 hp  -= amount;
+
+                if (hp < 0)
+                {
+                    Kill();
+                } 
             }
         }
 
