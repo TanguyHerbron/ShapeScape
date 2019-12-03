@@ -14,27 +14,6 @@ public class Player : Character
         Speed = speed;
     }
 
-    /// <summary>
-    /// Collision detector
-    /// Checks if the object colliding with the player should or not apply damage
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if((collision.gameObject.CompareTag("Melee Weapon") || collision.gameObject.CompareTag("Ennemy")) && !Invicible)
-        {
-            ApplyDamage(1);
-
-            if(IsDead())
-            {
-                GameObject.Find("Canvas").transform.Find("DeathPanel").gameObject.SetActive(true);
-            } else
-            {
-                StartCoroutine(Invicibility());
-            }
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         RoomSpawn spawn = GameObject.Find("Grid").GetComponent<RoomSpawn>();
@@ -55,15 +34,5 @@ public class Player : Character
         }
     }
 
-    /// <summary>
-    /// Provides immunity to the player for one second
-    /// By setting the immune boolean to true
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator Invicibility()
-    {
-        Invicible = true;
-        yield return new WaitForSeconds(1);
-        Invicible = false;
-    }
+
 }
