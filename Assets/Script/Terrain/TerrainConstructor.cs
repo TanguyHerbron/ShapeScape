@@ -58,14 +58,37 @@ public class TerrainConstructor : MonoBehaviour
             DrawCenters();
         }
 
+        SpawnExit(spawnPos);
+
         Instantiate(player, new Vector3(spawnPos.x, spawnPos.y), Quaternion.identity);
         Instantiate(ally, new Vector3(spawnPos.x + Random.Range(1, 3), spawnPos.y + Random.Range(1, 3)), Quaternion.identity);
+    }
+
+    private void SpawnExit(Vector2Int spawnPos)
+    {
+        Vector2Int exit = Vector2Int.zero;
+
+        do
+        {
+            exit = roomCenters[Random.Range(0, roomCenters.Count)];
+        } while (exit == spawnPos);
+
+        ground.SetTile(new Vector3Int(exit.x, exit.y, 0), redTile);
+
+        GameObject end = new GameObject();
+        end.name = "End";
+        BoxCollider2D collider = end.AddComponent<BoxCollider2D>();
+        collider.size = new Vector2(1, 1);
+        collider.offset = new Vector2(0.5f, 0.5f);
+        collider.isTrigger = true;
+
+        end.transform.position = new Vector3(exit.x, exit.y, 0);
+        end.transform.parent = transform;
     }
 
     private void SpawnRoomCollider(int x, int y, Room room)
     {
         GameObject colliderObject = new GameObject();
-        // Naming : L x,y H x,y
         colliderObject.name = (x * maxRoomWidth) + "," + (y * maxRoomHeight) + "," + (x * maxRoomWidth + maxRoomWidth) + "," + (y * maxRoomHeight + maxRoomHeight);
         BoxCollider2D collider = colliderObject.AddComponent<BoxCollider2D>();
         collider.size = new Vector2(room.tiles.GetLength(0), room.tiles.GetLength(1));
