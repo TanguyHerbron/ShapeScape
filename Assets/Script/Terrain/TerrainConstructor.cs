@@ -64,6 +64,11 @@ public class TerrainConstructor : MonoBehaviour
         Instantiate(ally, new Vector3(spawnPos.x + Random.Range(1, 3), spawnPos.y + Random.Range(1, 3)), Quaternion.identity);
     }
 
+    /// <summary>
+    /// Creates an exit point for the level.
+    /// This point is represented by <c>redTile</c>.
+    /// </summary>
+    /// <param name="spawnPos">The coordinates of the exit point.</param>
     private void SpawnExit(Vector2Int spawnPos)
     {
         Vector2Int exit = Vector2Int.zero;
@@ -86,6 +91,12 @@ public class TerrainConstructor : MonoBehaviour
         end.transform.parent = transform;
     }
 
+    /// <summary>
+    /// Creates a collider around the room for entering and exiting detection.
+    /// </summary>
+    /// <param name="x">The x center of the room.</param>
+    /// <param name="y">The y center of the room.</param>
+    /// <param name="room">The room for which we create a collider.</param>
     private void SpawnRoomCollider(int x, int y, Room room)
     {
         GameObject colliderObject = new GameObject();
@@ -99,6 +110,9 @@ public class TerrainConstructor : MonoBehaviour
         colliderObject.transform.parent = transform;
     }
 
+    /// <summary>
+    /// Draw the center of every room, for debug purposes.
+    /// </summary>
     private void DrawCenters()
     {
         foreach(Vector2Int center in roomCenters)
@@ -107,6 +121,12 @@ public class TerrainConstructor : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// <para>Creates a list of <paramref name="roomCount"/> rooms.</para>
+    /// <para>Their heights is randomly chosen between <paramref name="minRoomHeight"/> and <paramref name="maxRoomHeight"/>.</para>
+    /// <para>Their widths is randomly chosen between <paramref name="minRoomWidth"/> and <paramref name="maxRoomWidth"/>.</para>
+    /// </summary>
     private void GenerateRooms()
     {
         rooms = new List<Room>();
@@ -119,12 +139,16 @@ public class TerrainConstructor : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Randomly places the rooms across the map.
+    /// </summary>
     private void ArrangeRooms()
     {
         const int maxRoomTries = 100;
 
         roomList = new Room[1 + rooms.Count / (rooms.Count / 2), 1 + rooms.Count / (rooms.Count / 2)];
 
+        // For each room.
         for (int i = 0; i < rooms.Count; i++)
         {
             int roomPlacementTries = 0;
@@ -132,6 +156,7 @@ public class TerrainConstructor : MonoBehaviour
             int values = roomList.GetLength(0) * roomList.GetLength(1);
             int index = Random.Range(0, values);
 
+            // Try to place the selected room, if the randomly found index is not empty, another index is generated.
             while(roomPlacementTries < maxRoomTries)
             {
                 roomPlacementTries++;
@@ -145,6 +170,10 @@ public class TerrainConstructor : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Draws every rooms on the tilemap.
+    /// If a tile is not part of a room, it's filled with a wall.
+    /// </summary>
     private void DrawRooms()
     {
         for(int x = 0; x < roomList.GetLength(0); x++)
@@ -166,6 +195,7 @@ public class TerrainConstructor : MonoBehaviour
                     }
                 }
 
+                // If there is a room at this index, we generate a collider for this room.
                 if(roomList[x, y] != null)
                 {
                     SpawnRoomCollider(x, y, roomList[x, y]);
@@ -174,6 +204,10 @@ public class TerrainConstructor : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Draws avery corridos on the tilemap.
+    /// </summary>
+    /// <returns>The spawn point for the player and ally.</returns>
     private Vector2Int DrawCorridors()
     {
         List<Vector2Int> corridorEndpoints = new List<Vector2Int>();
@@ -191,6 +225,8 @@ public class TerrainConstructor : MonoBehaviour
 
         roomCenters = new List<Vector2Int>(corridorEndpoints);
 
+        // For every roomCenters, we try to find a patch towards another random selected roomCenter.
+        // If a path is found, we remove the start point from the roomCenter list to not have multiple paths towards one room.
         while(corridorEndpoints.Count > 1)
         {
             Vector2Int start = corridorEndpoints[Random.Range(0, corridorEndpoints.Count)];
