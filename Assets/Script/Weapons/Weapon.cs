@@ -1,9 +1,11 @@
-﻿namespace Assets.Weapons
+﻿using UnityEngine;
+
+namespace Assets.Weapons
 {
     /// <summary>
-    /// Abstract class for every characters in the game
+    /// Abstract class for every weapons in the game
     /// </summary>
-    public abstract class Weapon
+    public class Weapon : MonoBehaviour, IWeapon
     {
         private int id;
         private string name;
@@ -12,6 +14,15 @@
         private float range;
         private int ammo;
         private bool isAOE = false;
+
+        /***
+            METHODS
+        ***/
+
+        public virtual void Attack()
+        {
+            Debug.Log("suuuuuuuup");
+        }
 
         /***
             GETTERS AND SETTERS
@@ -93,7 +104,5 @@
                 isAOE = value;
             }
         }
-
-
     }
 }

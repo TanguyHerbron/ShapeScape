@@ -1,16 +1,17 @@
-﻿using System.Collections;
+﻿using Assets.Weapons;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HandManager : MonoBehaviour
 {
-    public GameObject weapon;
-    private GameObject oldWeapon;
+    public Weapon weapon;
+    private Weapon oldWeapon;
 
     // Update is called once per frame
     void Update()
     {
-        if(weapon != oldWeapon)
+        if ( weapon != oldWeapon )
         {
             weapon = Instantiate(weapon, transform.position + weapon.transform.position, weapon.transform.rotation);
             weapon.transform.parent = transform;
@@ -19,16 +20,9 @@ public class HandManager : MonoBehaviour
             oldWeapon = weapon;
         }
 
-        if(weapon.GetComponentInChildren<TrailRenderer>())
+        if ( weapon.GetComponentInChildren<TrailRenderer>() )
         {
             weapon.GetComponentInChildren<TrailRenderer>().enabled = weapon.GetComponent<Animator>().GetBool("Swing");
         }
-    }
-
-    public void attack()
-    {
-        Animator animator = weapon.GetComponent<Animator>();
-
-        animator.SetBool("Swing", true);
     }
 }
