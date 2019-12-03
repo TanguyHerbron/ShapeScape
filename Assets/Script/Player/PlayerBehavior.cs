@@ -37,7 +37,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         RoomSpawn spawn = GameObject.Find("Grid").GetComponent<RoomSpawn>();
 
-        if(collision.name.Contains("L") && collision.name.Contains("M"))
+        if(collision.name.Split(',').Length == 4)
         {
             string[] coords = collision.name.Split(',');
 
