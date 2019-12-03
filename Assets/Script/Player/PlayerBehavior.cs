@@ -37,12 +37,15 @@ public class PlayerBehavior : MonoBehaviour
     {
         RoomSpawn spawn = GameObject.Find("Grid").GetComponent<RoomSpawn>();
 
-        string[] coords = collision.name.Split(',');
+        if(collision.name.Contains("L") && collision.name.Contains("M"))
+        {
+            string[] coords = collision.name.Split(',');
 
-        spawn.SpawnEnnemies(System.Convert.ToInt32(coords[0]), 
-                            System.Convert.ToInt32(coords[2]), 
-                            System.Convert.ToInt32(coords[1]), 
-                            System.Convert.ToInt32(coords[3]));
+            spawn.SpawnEnnemies(System.Convert.ToInt32(coords[0]),
+                                System.Convert.ToInt32(coords[2]),
+                                System.Convert.ToInt32(coords[1]),
+                                System.Convert.ToInt32(coords[3]));
+        }
     }
 
     /// <summary>
