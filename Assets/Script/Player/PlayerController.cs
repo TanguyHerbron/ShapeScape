@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         // Checking for attacks
         if ( Input.GetMouseButtonDown(0) || Input.GetAxisRaw("Fire1") != 0 )
         {
-            hand.attack();
+            hand.weapon.Attack();
         }
     }
 
