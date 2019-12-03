@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 909e7ca58f4b9fa41b8aa496a2b2d254
+guid: 5884f52bd20199740800df5eb841d625
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7186223825358793108
-    second: Circle
+      213: 4243685000032919311
+    second: Ally
   - first:
-      213: 7810193000123994671
-    second: Beserker
+      213: 218082736178806533
+    second: Ally_1
   - first:
-      213: 1637320240669089884
-    second: Triangle
+      213: 6655788449019494733
+    second: Ally_2
   - first:
-      213: 4026964576934622668
-    second: Hexagon
+      213: 3163735889584413144
+    second: Ally_3
+  - first:
+      213: 6730523012484745776
+    second: Ally_4
+  - first:
+      213: 8299585071838111118
+    second: Ally_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -57,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -98,12 +104,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Circle
+      name: Ally
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 65
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -112,19 +118,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39e1d3772ddb19444832e17340536f1e
-      internalID: 7186223825358793108
+      spriteID: cbb028a73e802b04abee40d160e8c5f0
+      internalID: 4243685000032919311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Beserker
+      name: Ally_1
       rect:
         serializedVersion: 2
-        x: 94
-        y: 1
-        width: 65
+        x: 84
+        y: 0
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -133,40 +139,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b561abfee70ea23429d5718248f62c4f
-      internalID: 7810193000123994671
+      spriteID: 3f86fad4eeef43240b3b007db02b8228
+      internalID: 218082736178806533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Triangle
+      name: Ally_2
       rect:
         serializedVersion: 2
-        x: 196
-        y: 5
-        width: 65
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41826e095f85e404cba0d60e9124c42e
-      internalID: 1637320240669089884
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hexagon
-      rect:
-        serializedVersion: 2
-        x: 298
-        y: 1
-        width: 56
+        x: 168
+        y: 0
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -175,8 +160,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61cefa3933d87dc4aa60de944b599057
-      internalID: 4026964576934622668
+      spriteID: d917bb1839f255d49a2b91bc5807dcd8
+      internalID: 6655788449019494733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ally_3
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca058d4c17a1ca44b6493d6e8abbee3
+      internalID: 3163735889584413144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ally_4
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dcc207b3ea875f4f84290b4a098e158
+      internalID: 6730523012484745776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ally_5
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a05b3b5baa6458245b892f084bf9c42b
+      internalID: 8299585071838111118
       vertices: []
       indices: 
       edges: []
