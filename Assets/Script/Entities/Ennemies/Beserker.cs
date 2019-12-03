@@ -1,37 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Entities;
 using UnityEngine;
-using Assets.Entities;
 
-public class BeserkerBehaviour: MonoBehaviour
+public class Beserker: Ennemy
 {
-    private Character beserker;
-
     private Vector3 ennemyPosition;
     private Vector3 playerPosition;
 
     public float beserkerSpeed;
 
-    private ParticleSystem particleSystemm;
-
     // Start is called before the first frame update
     void Start()
     {
-        beserker = new Character("Beserker", 5, beserkerSpeed);
+        Name = "Beserker";
+        HP = 5;
+        Speed = beserkerSpeed;
 
 
         GetComponent<ParticleSystem>().Stop();
 
         // Init of the rotation and position of a ennemy
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-        MoveTo(playerPosition, beserker.Speed);
+        MoveTo(playerPosition, Speed);
     }
 
     // Update is called once per frame
     void Update()
     {
         // Stops the ennemies depending on their state
-        if (beserker.IsDead())
+        if (IsDead())
         {
             StopMoving();
 
@@ -44,24 +40,15 @@ public class BeserkerBehaviour: MonoBehaviour
         {
             // Update of the rotation and position of a ennemy
             playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-            MoveTo(playerPosition, beserker.Speed);
+            MoveTo(playerPosition, Speed);
         }
-    }
-
-    /// <summary>
-    /// Accessor for the ennemy
-    /// </summary>
-    /// <returns>the current bear</returns>
-    public Character GetEnnemy()
-    {
-        return beserker;
     }
 
     /// <summary>
     /// Moves the character towards the target
     /// Also orienting the character towards the targer
     /// </summary>
-    /// <param name="target"></param>
+    /// <param name="target">The target Vector3 that the entity should move towards</param>
     public void MoveTo(Vector3 target, float movingSpeed)
     {
         ennemyPosition = Vector2.MoveTowards(transform.position, target, Time.deltaTime * movingSpeed);
@@ -91,7 +78,7 @@ public class BeserkerBehaviour: MonoBehaviour
             GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<ParticleSystem>().Play();
-            beserker.Kill();
+            Kill();
         }
     }
 }

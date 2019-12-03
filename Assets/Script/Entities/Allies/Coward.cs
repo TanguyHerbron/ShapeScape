@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Entities;
 using UnityEngine;
-using Assets.Entities;
 
-public class AllyBehaviour : MonoBehaviour
+public class Coward : Character
 {
-    private Character character;
     private GameObject player;
     private Vector3 oldTarget;
 
@@ -20,7 +17,10 @@ public class AllyBehaviour : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        character = new Character("Michel", 100, speed);
+
+        Name = "Michel";
+        HP = 6;
+        Speed = speed;
 
         InvokeRepeating("UpdateBehaviour", 0f, 2f);
     }

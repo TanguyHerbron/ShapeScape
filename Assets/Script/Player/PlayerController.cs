@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GetComponent<PlayerBehavior>().GetPlayer();
+        player = GetComponent<Player>();
         hand = GetComponent<HandManager>();
     }
 

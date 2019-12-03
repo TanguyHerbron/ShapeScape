@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ennemies:
-  - {fileID: 961610534742077641, guid: 56000fac8183d954da4316050791df57, type: 3}
+  - {fileID: 961610534742077641, guid: ea30b31a918ace84789e99ceb0b671a6, type: 3}
   minEnnemies: 1
   maxEnnemies: 1
 --- !u!1 &425327942
@@ -1350,7 +1350,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1609596960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab34fcd5ef3c9cb428f2d6aad4b90d3c, type: 3}
+  m_Script: {fileID: 11500000, guid: ffdab7e4bf98ef3418b0fa0681002a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &1609596962
@@ -1399,7 +1399,7 @@ SpriteRenderer:
   m_Size: {x: 2.3, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1609596963

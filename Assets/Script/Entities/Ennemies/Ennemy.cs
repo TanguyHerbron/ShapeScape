@@ -1,8 +1,7 @@
 ﻿namespace Assets.Entities
 {
-    public class Character : Entity
+    public class Ennemy : Entity
     {
 
     }
 }
-

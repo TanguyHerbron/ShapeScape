@@ -19,9 +19,9 @@ namespace Assets.Weapons
             METHODS
         ***/
 
+
         public virtual void Attack()
         {
-            Debug.Log("suuuuuuuup");
         }
 
         /***

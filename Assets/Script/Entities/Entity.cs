@@ -1,9 +1,11 @@
-﻿namespace Assets.Entities
+﻿using UnityEngine;
+
+namespace Assets.Entities
 {
     /// <summary>
     /// Abstract class for every characters in the game
     /// </summary>
-    public abstract class Entity
+    public abstract class Entity : MonoBehaviour
     {
         private int id;
         private float hp;
@@ -162,7 +164,6 @@
         {
             this.hp = 0;
         }
-
 
     }
 }

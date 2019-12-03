@@ -20,7 +20,7 @@ public class HealthDisplayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehavior>().GetPlayer();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         
         // Checking current number of heart
         currentNumOfHearts = (int) Math.Ceiling(( (double) player.HP ) / 2);

@@ -2,21 +2,16 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerBehavior : MonoBehaviour
+public class Player : Character
 {
-    private Character player;
-    public int speed = 100;
+    public int speed;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = new Character("Test", 6, speed);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        Name = "Player";
+        HP = 6;
+        Speed = speed;
     }
 
     /// <summary>
@@ -26,11 +21,11 @@ public class PlayerBehavior : MonoBehaviour
     /// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if((collision.gameObject.CompareTag("Melee Weapon") || collision.gameObject.CompareTag("Ennemy")) && !player.Invicible)
+        if((collision.gameObject.CompareTag("Melee Weapon") || collision.gameObject.CompareTag("Ennemy")) && !Invicible)
         {
-            player.ApplyDamage(1);
+            ApplyDamage(1);
 
-            if(player.IsDead())
+            if(IsDead())
             {
                 GameObject.Find("Canvas").transform.Find("DeathPanel").gameObject.SetActive(true);
             } else
@@ -67,18 +62,8 @@ public class PlayerBehavior : MonoBehaviour
     /// <returns></returns>
     private IEnumerator Invicibility()
     {
-        player.Invicible = true;
+        Invicible = true;
         yield return new WaitForSeconds(1);
-        player.Invicible = false;
-    }
-
-    public Character GetPlayer()
-    {
-        if(player == null)
-        {
-            player = new Character("Test", 5, speed);
-        }
-
-        return player;
+        Invicible = false;
     }
 }
