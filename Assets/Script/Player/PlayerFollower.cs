@@ -4,25 +4,35 @@ using UnityEngine;
 
 public class PlayerFollower : MonoBehaviour
 {
+    GameObject ally = null;
     GameObject player = null;
-    Vector3 velocity = Vector3.zero;
-    public string targetTag = "Player";
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Vector3 velocity = Vector3.zero;
+    public string targetTag = "Ally";
+    public string orientationTag = "Player";
+    public int maxDistance = 5;
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if (player == null)
+        if (ally == null)
         {
-            player = GameObject.FindGameObjectWithTag(targetTag);
+            ally = GameObject.FindGameObjectWithTag(targetTag);
         }
 
-        Vector3 target = player.transform.TransformPoint(new Vector3(0, 5, -10));
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag(orientationTag);
+        }
+
+        Vector3 direction = player.transform.position - ally.transform.position;
+
+        direction.x = Mathf.Clamp(direction.x, -maxDistance, maxDistance);
+        direction.y = Mathf.Clamp(direction.y, -maxDistance, maxDistance);
+
+        direction.z = -10;
+
+        Vector3 target = ally.transform.TransformPoint(direction);
 
         transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, 0.3f);
     }
