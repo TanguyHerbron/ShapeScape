@@ -34,6 +34,7 @@ public class BeserkerBehaviour: MonoBehaviour
         if (beserker.IsDead())
         {
             StopMoving();
+
             if(!GetComponent<ParticleSystem>().IsAlive())
             {
                 Destroy(this);
@@ -87,6 +88,7 @@ public class BeserkerBehaviour: MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Melee Weapon"))
         {
+            GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<ParticleSystem>().Play();
             beserker.Kill();
