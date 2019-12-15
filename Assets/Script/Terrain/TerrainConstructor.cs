@@ -7,9 +7,11 @@ public class TerrainConstructor : MonoBehaviour
 {
     public Tilemap ground;
     public Tilemap borders;
+    public Tilemap corridor;
 
     public Tile groundTile;
     public Tile borderTile;
+    public Tile corridorTile;
     public Tile redTile;
 
     public int maxRoomWidth = 32;
@@ -260,7 +262,7 @@ public class TerrainConstructor : MonoBehaviour
                 {
                     for (int y = start.y - corridorSize; y < start.y + corridorSize; y++)
                     {
-                        ground.SetTile(new Vector3Int(x + offset, y - offset / 2, 0), groundTile);
+                        corridor.SetTile(new Vector3Int(x + offset, y - offset / 2, 0), corridorTile);
                         borders.SetTile(new Vector3Int(x + offset, y - offset / 2, 0), null);
                     }
                 }
