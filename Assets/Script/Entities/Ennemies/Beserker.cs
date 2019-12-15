@@ -1,4 +1,5 @@
 ﻿using Assets.Entities;
+using System.Collections;
 using UnityEngine;
 
 public class Beserker: Ennemy
@@ -78,7 +79,18 @@ public class Beserker: Ennemy
             GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<ParticleSystem>().Play();
-            Kill();
+            StartCoroutine(WaitBeforeDestroy());
         }
+    }
+
+    /// <summary>
+    /// Waits for the particicle effect before detroying gameobject
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator WaitBeforeDestroy()
+    {
+        yield return new WaitForSeconds(1);
+        Kill();
+        GameObject.Destroy(this.gameObject);
     }
 }
