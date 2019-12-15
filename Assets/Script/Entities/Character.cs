@@ -35,7 +35,7 @@ namespace Assets.Entities
         private IEnumerator Invicibility()
         {
             Invicible = true;
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2);
             Invicible = false;
         }
     }
