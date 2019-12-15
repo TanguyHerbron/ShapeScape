@@ -28,7 +28,6 @@ public class AllyHealthDisplayer : MonoBehaviour
         {
             spriteRenderer.sprite = allySprites[(int) ally.HP - 1];
             currentHealth = ally.HP;
-            Debug.Log(ally.HP);
         }
     }
 }
