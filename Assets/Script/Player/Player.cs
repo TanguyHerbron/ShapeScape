@@ -33,6 +33,7 @@ public class Player : Character
         if(collision.name == "End")
         {
             GameObject.Find("Canvas").transform.Find("EndPanel").gameObject.SetActive(true);
+            Time.timeScale = 0.0f;
         }
 
         if(collision.name.Split(',').Length == 4)

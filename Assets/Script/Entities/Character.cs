@@ -19,6 +19,7 @@ namespace Assets.Entities
                 if ( IsDead() )
                 {
                     GameObject.Find("Canvas").transform.Find("DeathPanel").gameObject.SetActive(true);
+                    Time.timeScale = 0.0f;
                 }
                 else
                 {
