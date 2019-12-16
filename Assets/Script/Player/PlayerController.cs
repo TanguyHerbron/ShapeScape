@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         rb.rotation =  angle + 180;
 
         // Checking for attacks
-        if ( Input.GetMouseButtonUp(0) || Input.GetAxisRaw("Fire1") != 0 )
+        if ( Input.GetMouseButtonUp(0) )
         {
             hand.weapon.Attack();
         }

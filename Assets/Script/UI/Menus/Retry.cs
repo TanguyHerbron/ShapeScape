@@ -10,7 +10,6 @@ public class Retry : MonoBehaviour
     public void Restart()
     {
         currentScene = SceneManager.GetActiveScene();
-        SceneManager.UnloadSceneAsync(currentScene.buildIndex);
         SceneManager.LoadScene(currentScene.name);
     }
 }
