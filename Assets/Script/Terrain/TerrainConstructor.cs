@@ -36,6 +36,7 @@ public class TerrainConstructor : MonoBehaviour
 
     private Room[,] roomList;
 
+    public bool straightCorridor = true;
     public int corridorSize = 1;
 
     public GameObject player;
@@ -272,48 +273,86 @@ public class TerrainConstructor : MonoBehaviour
 
         roomCenters = new List<Vector2Int>(corridorEndpoints);
 
-        // For every roomCenters, we try to find a patch towards another random selected roomCenter.
+        // If straightCorridor is set to true, will draw straight corridor, otherwise will try to draw organic looking corridors.
+
+        // For every roomCenters, we try to find a path towards another random selected roomCenter.
         // If a path is found, we remove the start point from the roomCenter list to not have multiple paths towards one room.
-        while(corridorEndpoints.Count > 1)
+        if (straightCorridor)
         {
-            Vector2Int start = corridorEndpoints[Random.Range(0, corridorEndpoints.Count)];
-            corridorEndpoints.Remove(start);
-
-            Vector2Int destination = corridorEndpoints[Random.Range(0, corridorEndpoints.Count)];
-
-            while (start != destination)
+            while (corridorEndpoints.Count > 1)
             {
-                if (start.x > destination.x)
+                Vector2Int start = corridorEndpoints[Random.Range(0, corridorEndpoints.Count)];
+                corridorEndpoints.Remove(start);
+
+                Vector2Int destination = corridorEndpoints[Random.Range(0, corridorEndpoints.Count)];
+
+                while (start.x != destination.x)
                 {
-                    start.x--; ;
-                }
-                else if (start.x < destination.x)
-                {
-                    start.x++; ;
+                    start.x += Mathf.FloorToInt(Mathf.Sign(destination.x - start.x));
+
+                    DrawCorridorTile(start);
                 }
 
-                if (start.y > destination.y)
+                while(start.y != destination.y)
                 {
-                    start.y--; ;
-                }
-                else if (start.y < destination.y)
-                {
-                    start.y++;
-                }
+                    start.y += Mathf.FloorToInt(Mathf.Sign(destination.y - start.y));
 
-                int offset = Mathf.RoundToInt(10 * Mathf.PerlinNoise(start.x / 8f, start.y / 8f) / 2);
+                    DrawCorridorTile(start);
+                }
+            }
+        } else
+        {
+            while (corridorEndpoints.Count > 1)
+            {
+                Vector2Int start = corridorEndpoints[Random.Range(0, corridorEndpoints.Count)];
+                corridorEndpoints.Remove(start);
 
-                for (int x = start.x - corridorSize; x < start.x + corridorSize; x++)
+                Vector2Int destination = corridorEndpoints[Random.Range(0, corridorEndpoints.Count)];
+
+                while (start != destination)
                 {
-                    for (int y = start.y - corridorSize; y < start.y + corridorSize; y++)
+                    if (start.x > destination.x)
                     {
-                        corridor.SetTile(new Vector3Int(x + offset, y - offset / 2, 0), corridorTile);
-                        borders.SetTile(new Vector3Int(x + offset, y - offset / 2, 0), null);
+                        start.x--;
                     }
+                    else if (start.x < destination.x)
+                    {
+                        start.x++;
+                    }
+
+                    if (start.y > destination.y)
+                    {
+                        start.y--;
+                    }
+                    else if (start.y < destination.y)
+                    {
+                        start.y++;
+                    }
+
+                    int offset = Mathf.RoundToInt(10 * Mathf.PerlinNoise(start.x / 8f, start.y / 8f) / 2);
+
+                    DrawCorridorTile(start, offset);
                 }
             }
         }
 
         return corridorEndpoints[0];
+    }
+
+    /// <summary>
+    /// Places a corridor tile on the corridor tilemap and removes any wall at the same position from the border tilemap
+    /// </summary>
+    /// <param name="pos">Position to draw around</param>
+    /// <param name="offset">Optional offset, mainly used to noise</param>
+    void DrawCorridorTile(Vector2Int pos, int offset = 0)
+    {
+        for (int x = pos.x; x < pos.x + corridorSize; x++)
+        {
+            for (int y = pos.y; y < pos.y + corridorSize; y++)
+            {
+                corridor.SetTile(new Vector3Int(x + offset, y - offset / 2, 0), corridorTile);
+                borders.SetTile(new Vector3Int(x + offset, y - offset / 2, 0), null);
+            }
+        }
     }
 }
