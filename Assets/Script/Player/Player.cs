@@ -28,28 +28,10 @@ public class Player : Character
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        RoomSpawn spawn = GameObject.Find("Grid").GetComponent<RoomSpawn>();
-
         if ( collision.name == "End")
         {
             GameObject.Find("Canvas").transform.Find("EndPanel").gameObject.SetActive(true);
             Time.timeScale = 0.0f;
-        }
-
-        //spawns ennemies
-        if ( collision.name.Split(',').Length == 5 )
-        {
-            string[] coords = collision.name.Split(',');
-
-            if ( coords[4].Equals(" ") )
-            {
-                spawn.SpawnEnnemies(System.Convert.ToInt32(coords[0]),
-                                    System.Convert.ToInt32(coords[2]),
-                                    System.Convert.ToInt32(coords[1]),
-                                    System.Convert.ToInt32(coords[3]));
-
-                collision.name = collision.name.Replace(' ', 'c');
-            }
         }
     }
 }
