@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Beserker: Ennemy
 {
-    private Vector3 ennemyPosition;
-    private Vector3 playerPosition;
+    private GameObject player;
 
     public float beserkerSpeed;
-
-    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
@@ -18,18 +15,24 @@ public class Beserker: Ennemy
         HP = 5;
         Speed = beserkerSpeed;
 
-        rb = GetComponent<Rigidbody2D>();
+        RigidBody = GetComponent<Rigidbody2D>();
 
         GetComponent<ParticleSystem>().Stop();
-
-        // Init of the rotation and position of a ennemy
-        playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-        MoveTo(playerPosition, Speed);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if ( RigidBody == null )
+        {
+            RigidBody = this.GetComponent<Rigidbody2D>();
+        }
+
+        if ( player == null )
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+
         // Stops the ennemies depending on their state
         if (IsDead())
         {
@@ -43,32 +46,9 @@ public class Beserker: Ennemy
         else
         {
             // Update of the rotation and position of a ennemy
-            playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-            MoveTo(playerPosition, Speed);
+            player = GameObject.FindGameObjectWithTag("Player");
+            MoveTo(player.transform.position, Speed);
         }
-    }
-
-    /// <summary>
-    /// Moves the character towards the target
-    /// Also orienting the character towards the targer
-    /// </summary>
-    /// <param name="target">The target Vector3 that the entity should move towards</param>
-    public void MoveTo(Vector3 target, float movingSpeed)
-    {
-        ennemyPosition = Vector2.MoveTowards(transform.position, target, Time.deltaTime * movingSpeed);
-        Vector3 DirectionOfRotation = target - transform.position;
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, DirectionOfRotation);
-
-        transform.position = ennemyPosition;
-    }
-
-    /// <summary>
-    /// Stops the character movements
-    /// </summary>
-    public void StopMoving()
-    {
-        transform.position = transform.position;
-        transform.rotation = transform.rotation;
     }
 
     /// <summary>

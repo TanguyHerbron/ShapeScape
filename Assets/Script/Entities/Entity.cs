@@ -15,6 +15,8 @@ namespace Assets.Entities
         private bool invicible = false;
         private bool damaged = false;
         private string name;
+        private Rigidbody2D rigidBody;
+
         private List<Location> path;
 
         public bool usePathFinder = false;
@@ -99,6 +101,8 @@ namespace Assets.Entities
                 name = value;
             }
         }
+
+        public Rigidbody2D RigidBody { get => rigidBody; set => rigidBody= value; }
 
         /// <summary>
         /// Checks if the character is dead
@@ -201,6 +205,26 @@ namespace Assets.Entities
         public Vector3 GetDirection(Transform playerTransform)
         {
             return GetDirection(playerTransform.position);
+        }
+
+        /// <summary>
+        /// Moves the character towards the target
+        /// Also orienting the character towards the targer
+        /// </summary>
+        /// <param name="target">The target Vector3 that the entity should move towards</param>
+        public void MoveTo(Vector3 target, float movingSpeed)
+        {
+            Vector3 direction = GetDirection(target);
+            this.rigidBody.velocity = Vector2.zero;
+            this.rigidBody.AddForce(direction * movingSpeed);
+        }
+
+        /// <summary>
+        /// Stops the character movements
+        /// </summary>
+        public void StopMoving()
+        {
+            this.rigidBody.velocity = Vector2.zero;
         }
 
     }

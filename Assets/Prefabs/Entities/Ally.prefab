@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usePathFinder: 1
   maxDistance: 2
-  speed: 100
+  speed: 160
 --- !u!114 &3607734739204754626
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,22 +6,17 @@ using UnityEngine.Tilemaps;
 public class Coward : Character
 {
     private GameObject player;
-    private Vector3 oldTarget;
-    private Location oldPathTarget;
-
-    private List<Location> path;
 
     public int maxDistance = 10;
 
     private enum State {Following, Idle, COUNT};
     private State currentState = State.Idle;
 
-    private Rigidbody2D rb;
     public int speed;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        RigidBody = this.GetComponent<Rigidbody2D>();
 
         Name = "Michel";
         HP = 6;
@@ -41,18 +36,15 @@ public class Coward : Character
         {
             if(currentState == State.Following)
             {
-                Vector3 target = GetDirection(player.transform);
-
-                rb.velocity = Vector2.zero;
-                rb.AddForce(target * speed);
+                MoveTo(player.transform.position, Speed);
             }
             else
             {
-                rb.velocity = Vector2.zero;
+                StopMoving();
             }
         } else
         {
-            rb.velocity = Vector2.zero;
+            StopMoving();
         }
     }
 

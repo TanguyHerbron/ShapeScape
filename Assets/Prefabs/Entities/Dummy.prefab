@@ -4925,3 +4925,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8918d7ef0912241acfaf352873c8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usePathFinder: 0
+  DummySpeed: 45
