@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc25d0a18fb6c824aba87a553638bf77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usePathFinder: 1
   maxDistance: 2
   speed: 100
 --- !u!114 &3607734739204754626

@@ -9,6 +9,8 @@ public class Beserker: Ennemy
 
     public float beserkerSpeed;
 
+    private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,7 @@ public class Beserker: Ennemy
         HP = 5;
         Speed = beserkerSpeed;
 
+        rb = GetComponent<Rigidbody2D>();
 
         GetComponent<ParticleSystem>().Stop();
 

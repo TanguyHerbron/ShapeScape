@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 namespace Assets.Entities
 {
@@ -13,6 +15,9 @@ namespace Assets.Entities
         private bool invicible = false;
         private bool damaged = false;
         private string name;
+        private List<Location> path;
+
+        public bool usePathFinder = false;
 
         /***
             GETTERS AND SETTERS
@@ -163,6 +168,39 @@ namespace Assets.Entities
         public void Kill()
         {
             this.hp = 0;
+        }
+
+        public Vector3 GetDirection(Vector3 playerVec)
+        {
+            if (usePathFinder)
+            {
+                Location pathTarget = new Location(Mathf.FloorToInt(playerVec.x)
+                    , Mathf.FloorToInt(playerVec.y));
+
+                Location start = new Location(Mathf.FloorToInt(transform.position.x)
+                    , Mathf.FloorToInt(transform.position.y));
+
+                Tilemap groundTilemap = GameObject.FindGameObjectsWithTag("Walkable")[0].GetComponent<Tilemap>();
+                Tilemap corridorTilemap = GameObject.FindGameObjectsWithTag("Walkable")[1].GetComponent<Tilemap>();
+
+                AStarPathfinder aStar = new AStarPathfinder(start, pathTarget, groundTilemap, corridorTilemap);
+
+                aStar.ComputePath();
+
+                path = aStar.GetPath();
+
+                if (path != null && path.Count > 0)
+                {
+                    return (new Vector3(path[0].X + 0.5f, path[0].Y + 0.5f, 0) - transform.position).normalized;
+                }
+            }
+
+            return (playerVec - transform.position).normalized;
+        }
+
+        public Vector3 GetDirection(Transform playerTransform)
+        {
+            return GetDirection(playerTransform.position);
         }
 
     }

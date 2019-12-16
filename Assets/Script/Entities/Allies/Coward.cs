@@ -1,10 +1,15 @@
 ﻿using Assets.Entities;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Coward : Character
 {
     private GameObject player;
     private Vector3 oldTarget;
+    private Location oldPathTarget;
+
+    private List<Location> path;
 
     public int maxDistance = 10;
 
@@ -36,18 +41,10 @@ public class Coward : Character
         {
             if(currentState == State.Following)
             {
-                Vector3 target = (player.transform.position - transform.position).normalized;
+                Vector3 target = GetDirection(player.transform);
 
-                if(target != oldTarget)
-                {
-                    oldTarget = target;
-                    rb.velocity = Vector2.zero;
-                }
-
-                if (rb.velocity == Vector2.zero)
-                {
-                    rb.AddForce(target * speed);
-                }                
+                rb.velocity = Vector2.zero;
+                rb.AddForce(target * speed);
             }
             else
             {
@@ -61,6 +58,8 @@ public class Coward : Character
 
     private void UpdateBehaviour()
     {
-        currentState = (State) Random.Range(0, (float) State.COUNT);        
+        currentState = (State) Random.Range(0, (float) State.COUNT);
+
+        currentState = State.Following;
     }
 }
