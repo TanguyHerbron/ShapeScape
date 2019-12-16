@@ -12,8 +12,13 @@ namespace Assets.Weapons
         // Start is called before the first frame update
         void Start()
         {
+            Name = "Old School";
             FireRate = fireRate;
             timeStamp = Time.time;
+            Ammo = 1;
+            MagazineSize = 1;
+            TotalAmmo = 1;
+            Sprite = this.GetComponent<SpriteRenderer>().sprite;
         }
 
         // Update is called once per frame
