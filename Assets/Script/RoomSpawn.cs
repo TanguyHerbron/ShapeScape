@@ -8,8 +8,8 @@ public class RoomSpawn : MonoBehaviour
 {
     public GameObject[] Ennemies;               // The enemies prefab to be spawned.            
 
-    public int minEnnemies; // Minimum of ennemies to be spawned per room
-    public int maxEnnemies; // Maximum of ennemies to be spawned per room
+    public int minEnnemies;                     // Minimum of ennemies to be spawned per room
+    public int maxEnnemies;                     // Maximum of ennemies to be spawned per room
 
     private Tilemap groundMap;
 

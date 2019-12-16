@@ -102,13 +102,11 @@ public class TerrainConstructor : MonoBehaviour
     private void SpawnRoomCollider(int x, int y, Room room)
     {
         GameObject colliderObject = new GameObject();
-        colliderObject.name = (x * maxRoomWidth) + "," + (y * maxRoomHeight) + "," + (x * maxRoomWidth + maxRoomWidth) + "," + (y * maxRoomHeight + maxRoomHeight);
+        colliderObject.name = (x * maxRoomWidth) + "," + (y * maxRoomHeight) + "," + (x * maxRoomWidth + maxRoomWidth) + "," + (y * maxRoomHeight + maxRoomHeight) + "," + " ";
         BoxCollider2D collider = colliderObject.AddComponent<BoxCollider2D>();
         collider.size = new Vector2(room.tiles.GetLength(0), room.tiles.GetLength(1));
         collider.isTrigger = true;
-
         colliderObject.transform.position = new Vector3(x * maxRoomWidth + room.tiles.GetLength(0) / 2, y * maxRoomHeight + room.tiles.GetLength(1) / 2);
-
         colliderObject.transform.parent = transform;
     }
 

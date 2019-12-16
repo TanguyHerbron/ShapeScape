@@ -6,11 +6,18 @@ public class Room
 {
     public int[,] tiles;
     Vector2Int mapPos;
+    private BoxCollider2D boxCollider;
+    private bool ennemiesSpawned;
+    private bool isCleared;
+
+    public BoxCollider2D BoxCollider { get => boxCollider; set => boxCollider= value; }
+    public bool EnnemiesSpawned { get => ennemiesSpawned; set => ennemiesSpawned= value; }
+    public bool IsCleared { get => isCleared; set => isCleared= value; }
 
     public Room(int[,] roomTiles)
     {
         this.tiles = roomTiles;
-
+        this.BoxCollider = new BoxCollider2D();
         mapPos = Vector2Int.zero;
     }
 
