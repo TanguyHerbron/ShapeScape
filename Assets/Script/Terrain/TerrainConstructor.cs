@@ -53,6 +53,8 @@ public class TerrainConstructor : MonoBehaviour
 
         Vector2Int spawnPos = DrawCorridors();
 
+        DrawWalls();
+
         if(drawRoomCenters)
         {
             DrawCenters();
@@ -62,6 +64,55 @@ public class TerrainConstructor : MonoBehaviour
 
         Instantiate(player, new Vector3(spawnPos.x, spawnPos.y), Quaternion.identity);
         Instantiate(ally, new Vector3(spawnPos.x + Random.Range(1, 3), spawnPos.y + Random.Range(1, 3)), Quaternion.identity);
+    }
+
+    /// <summary>
+    /// Draws a wall layer around rooms and corridors.
+    /// </summary>
+    private void DrawWalls()
+    {
+        for(int x = 0; x < ground.size.x; x++)
+        {
+            for(int y = 0; y < ground.size.y; y++)
+            {
+                if(HasNeighbouringGround(x, y))
+                {
+                    borders.SetTile(new Vector3Int(x, y, 0), borderTile);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Return true if there is a ground tile around the position given in parameter.
+    /// </summary>
+    /// <param name="tileX">Center on the X axis</param>
+    /// <param name="tileY">Center on the Y Axis</param>
+    /// <returns>True if there is a neighbouring ground tile</returns>
+    private bool HasNeighbouringGround(int tileX, int tileY)
+    {
+        bool hasNeighbour = false;
+
+        int x = tileX - 1;
+
+        while(x <= tileX + 1 && !hasNeighbour)
+        {
+            int y = tileY - 1;
+
+            while (y <= tileY + 1 && !hasNeighbour)
+            {
+                if(x != tileX && y != tileY)
+                {
+                    hasNeighbour = ground.GetTile(new Vector3Int(x, y, 0)) == groundTile;
+                }
+
+                y++;
+            }
+
+            x++;
+        }
+
+        return hasNeighbour;
     }
 
     /// <summary>
@@ -187,10 +238,6 @@ public class TerrainConstructor : MonoBehaviour
                         if (roomList[x, y] != null && roomList[x, y].tiles.GetLength(0) > xTile && roomList[x, y].tiles.GetLength(1) > yTile && roomList[x, y].tiles[xTile, yTile] == 0)
                         {
                             ground.SetTile(new Vector3Int(xTile + x * maxRoomWidth, yTile + y * maxRoomHeight, 0), groundTile);
-                        }
-                        else
-                        {
-                            borders.SetTile(new Vector3Int(xTile + x * maxRoomWidth, yTile + y * maxRoomHeight, 0), borderTile);
                         }
                     }
                 }
