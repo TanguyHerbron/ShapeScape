@@ -1,10 +1,15 @@
 ﻿using Assets.Entities;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Coward : Character
 {
     private GameObject player;
     private Vector3 oldTarget;
+    private Location oldPathTarget;
+
+    private List<Location> path;
 
     public int maxDistance = 10;
 
@@ -36,18 +41,31 @@ public class Coward : Character
         {
             if(currentState == State.Following)
             {
-                Vector3 target = (player.transform.position - transform.position).normalized;
+                Location pathTarget = new Location(Mathf.FloorToInt(player.transform.position.x)
+                    , Mathf.FloorToInt(player.transform.position.y));
 
-                if(target != oldTarget)
+                if (pathTarget != oldPathTarget)
                 {
-                    oldTarget = target;
-                    rb.velocity = Vector2.zero;
+                    Location start = new Location(Mathf.FloorToInt(transform.position.x)
+                    , Mathf.FloorToInt(transform.position.y));
+
+                    Tilemap groundTilemap = GameObject.FindGameObjectsWithTag("Walkable")[0].GetComponent<Tilemap>();
+                    Tilemap corridorTilemap = GameObject.FindGameObjectsWithTag("Walkable")[1].GetComponent<Tilemap>();
+
+                    AStarPathfinder aStar = new AStarPathfinder(start, pathTarget, groundTilemap, corridorTilemap);
+
+                    aStar.ComputePath();
+
+                    path = aStar.GetPath();
                 }
 
-                if (rb.velocity == Vector2.zero)
+                if(path != null && path.Count > 0)
                 {
+                    Vector2 target = (new Vector3(path[0].X + 0.5f, path[0].Y + 0.5f, 0) - transform.position).normalized;
+
+                    rb.velocity = Vector2.zero;
                     rb.AddForce(target * speed);
-                }                
+                }
             }
             else
             {
@@ -61,6 +79,8 @@ public class Coward : Character
 
     private void UpdateBehaviour()
     {
-        currentState = (State) Random.Range(0, (float) State.COUNT);        
+        currentState = (State) Random.Range(0, (float) State.COUNT);
+
+        currentState = State.Following;
     }
 }

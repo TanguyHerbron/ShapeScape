@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 2
   speed: 100
+  redTile: {fileID: 11400000, guid: 31504f3f69a31544094b314b8b1fce83, type: 2}
 --- !u!114 &3607734739204754626
 MonoBehaviour:
   m_ObjectHideFlags: 0
