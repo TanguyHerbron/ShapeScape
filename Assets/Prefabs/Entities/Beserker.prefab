@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 961610534742077642}
   - component: {fileID: -3541712812424807889}
   - component: {fileID: -8964112303494197803}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beserker
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
