@@ -146,20 +146,25 @@ public class TerrainConstructor : MonoBehaviour
     }
 
     /// <summary>
-    /// Creates a collider around the room for entering and exiting detection.
+    /// Creates a game object with a collider around the room for entering and exiting detection.
+    /// We also add the RoomManager component for the detection
     /// </summary>
     /// <param name="x">The x center of the room.</param>
     /// <param name="y">The y center of the room.</param>
     /// <param name="room">The room for which we create a collider.</param>
-    private void SpawnRoomCollider(int x, int y, Room room)
+    private void SpawnRoomGameObject(int x, int y, Room room)
     {
-        GameObject colliderObject = new GameObject();
-        colliderObject.name = (x * maxRoomWidth) + "," + (y * maxRoomHeight) + "," + (x * maxRoomWidth + maxRoomWidth) + "," + (y * maxRoomHeight + maxRoomHeight) + "," + " ";
-        BoxCollider2D collider = colliderObject.AddComponent<BoxCollider2D>();
+        GameObject roomGameObject = new GameObject();
+
+        roomGameObject.name = (x * maxRoomWidth) + "," + (y * maxRoomHeight) + "," + (x * maxRoomWidth + maxRoomWidth) + "," + (y * maxRoomHeight + maxRoomHeight);
+        roomGameObject.AddComponent<RoomManager>();
+
+        BoxCollider2D collider = roomGameObject.AddComponent<BoxCollider2D>();
         collider.size = new Vector2(room.tiles.GetLength(0), room.tiles.GetLength(1));
         collider.isTrigger = true;
-        colliderObject.transform.position = new Vector3(x * maxRoomWidth + room.tiles.GetLength(0) / 2, y * maxRoomHeight + room.tiles.GetLength(1) / 2);
-        colliderObject.transform.parent = transform;
+
+        roomGameObject.transform.position = new Vector3(x * maxRoomWidth + room.tiles.GetLength(0) / 2, y * maxRoomHeight + room.tiles.GetLength(1) / 2);
+        roomGameObject.transform.parent = transform;
     }
 
     /// <summary>
@@ -246,7 +251,7 @@ public class TerrainConstructor : MonoBehaviour
                 // If there is a room at this index, we generate a collider for this room.
                 if(roomList[x, y] != null)
                 {
-                    SpawnRoomCollider(x, y, roomList[x, y]);
+                    SpawnRoomGameObject(x, y, roomList[x, y]);
                 }
             }
         }
