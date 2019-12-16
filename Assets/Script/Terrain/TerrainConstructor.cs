@@ -77,7 +77,7 @@ public class TerrainConstructor : MonoBehaviour
         {
             for(int y = 0; y < ground.size.y; y++)
             {
-                if(HasNeighbouringGround(x, y))
+                if(ground.GetTile(new Vector3Int(x, y, 0)) == null && corridor.GetTile(new Vector3Int(x, y, 0)) == null && HasNeighbouringGround(x, y))
                 {
                     borders.SetTile(new Vector3Int(x, y, 0), borderTile);
                 }
@@ -105,7 +105,7 @@ public class TerrainConstructor : MonoBehaviour
             {
                 if(x != tileX && y != tileY)
                 {
-                    hasNeighbour = ground.GetTile(new Vector3Int(x, y, 0)) == groundTile;
+                    hasNeighbour = ground.GetTile(new Vector3Int(x, y, 0)) == groundTile || corridor.GetTile(new Vector3Int(x, y, 0)) == corridorTile;
                 }
 
                 y++;
