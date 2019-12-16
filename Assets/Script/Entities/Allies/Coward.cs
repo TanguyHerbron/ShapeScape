@@ -41,31 +41,10 @@ public class Coward : Character
         {
             if(currentState == State.Following)
             {
-                Location pathTarget = new Location(Mathf.FloorToInt(player.transform.position.x)
-                    , Mathf.FloorToInt(player.transform.position.y));
+                Vector3 target = GetDirection(player.transform);
 
-                if (pathTarget != oldPathTarget)
-                {
-                    Location start = new Location(Mathf.FloorToInt(transform.position.x)
-                    , Mathf.FloorToInt(transform.position.y));
-
-                    Tilemap groundTilemap = GameObject.FindGameObjectsWithTag("Walkable")[0].GetComponent<Tilemap>();
-                    Tilemap corridorTilemap = GameObject.FindGameObjectsWithTag("Walkable")[1].GetComponent<Tilemap>();
-
-                    AStarPathfinder aStar = new AStarPathfinder(start, pathTarget, groundTilemap, corridorTilemap);
-
-                    aStar.ComputePath();
-
-                    path = aStar.GetPath();
-                }
-
-                if(path != null && path.Count > 0)
-                {
-                    Vector2 target = (new Vector3(path[0].X + 0.5f, path[0].Y + 0.5f, 0) - transform.position).normalized;
-
-                    rb.velocity = Vector2.zero;
-                    rb.AddForce(target * speed);
-                }
+                rb.velocity = Vector2.zero;
+                rb.AddForce(target * speed);
             }
             else
             {
