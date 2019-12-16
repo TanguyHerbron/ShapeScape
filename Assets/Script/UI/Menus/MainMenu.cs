@@ -5,9 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Update is called once per frame
+    /// <summary>
+    /// Loads the gaming Scene
+    /// </summary>
     public void StartGame()
     {
         SceneManager.LoadScene("Generation_Tester");
+    }
+    
+    /// <summary>
+    /// Loads the settings Scene
+    /// </summary>
+    public void OpenSettings()
+    {
+        SceneManager.LoadScene("Settings");
+    }
+
+    /// <summary>
+    /// Closes the game
+    /// </summary>
+    public void ExitGame()
+    {
+        //TODO: Implement
     }
 }
