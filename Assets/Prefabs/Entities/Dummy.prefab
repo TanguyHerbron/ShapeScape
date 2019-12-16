@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -3541712812424807889}
   - component: {fileID: -8964112303494197803}
   - component: {fileID: 946638927243040069}
+  - component: {fileID: -6698192157540606032}
   m_Layer: 10
   m_Name: Dummy
   m_TagString: Ennemy
@@ -4925,5 +4926,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8918d7ef0912241acfaf352873c8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usePathFinder: 0
+  usePathFinder: 1
   DummySpeed: 45
+--- !u!114 &-6698192157540606032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961610534742077641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e5b6f37086c2b488677f37fdff5319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: -154506933656157001, guid: 2b4c5dc622ef3b04c96e08648a5ab705, type: 3}

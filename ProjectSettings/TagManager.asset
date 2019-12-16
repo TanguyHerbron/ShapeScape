@@ -5,10 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
-  - Melee Weapon
   - Ennemy
   - Ally
   - Walkable
+  - Weapon
   layers:
   - Default
   - TransparentFX

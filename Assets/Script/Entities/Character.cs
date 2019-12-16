@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Weapons;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Entities
@@ -12,13 +13,33 @@ namespace Assets.Entities
         /// <param name="collision"></param>
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if ( ( collision.gameObject.CompareTag("Melee Weapon") || collision.gameObject.CompareTag("Ennemy") ) && !Invicible )
+            if( !Invicible )
             {
-                ApplyDamage(1);
-
-                if (collision.gameObject.CompareTag("Ennemy")) {
+                if ( collision.gameObject.CompareTag("Ennemy") )
+                {
+                    Weapon weapon = collision.gameObject.GetComponent<HandManager>().weapon;
+                    ApplyDamage(weapon.Damage);
                     ScreenShakeController.instance.StartShake(.6f, .3f);
+
+                    if ( IsDead() )
+                    {
+                        GameObject.Find("Canvas").transform.Find("DeathPanel").gameObject.SetActive(true);
+                        Time.timeScale = 0.0f;
+                    }
+                    else
+                    {
+                        StartCoroutine(Invicibility());
+                    }
                 }
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if ( collision.gameObject.CompareTag("Weapon") )
+            {
+                Weapon weapon = collision.gameObject.GetComponent<Weapon>();
+                ApplyDamage(weapon.Damage);
 
                 if ( IsDead() )
                 {
