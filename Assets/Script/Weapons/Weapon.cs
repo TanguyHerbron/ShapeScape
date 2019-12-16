@@ -13,7 +13,10 @@ namespace Assets.Weapons
         private float fireRate;
         private float range;
         private int ammo;
+        private int totalAmmo;
+        private int magazineSize;
         private bool isAOE = false;
+        private Sprite sprite;
 
         /***
             METHODS
@@ -104,5 +107,10 @@ namespace Assets.Weapons
                 isAOE = value;
             }
         }
+
+        public int Ammo { get => ammo; set => ammo= value; }
+        public int TotalAmmo { get => totalAmmo; set => totalAmmo= value; }
+        public int MagazineSize { get => magazineSize; set => magazineSize= value; }
+        public Sprite Sprite { get => sprite; set => sprite= value; }
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4900270296362051099}
   - component: {fileID: 5705471530365898065}
   - component: {fileID: 3607734739204754626}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ally
   m_TagString: Ally
   m_Icon: {fileID: 0}
