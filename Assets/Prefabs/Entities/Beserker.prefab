@@ -146,11 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usePathFinder: 1
-<<<<<<< Updated upstream
-  beserkerSpeed: 5
-=======
   beserkerSpeed: 220
->>>>>>> Stashed changes
 --- !u!198 &-3541712812424807889
 ParticleSystem:
   m_ObjectHideFlags: 0
