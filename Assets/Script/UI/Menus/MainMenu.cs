@@ -26,6 +26,6 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void ExitGame()
     {
-        //TODO: Implement
+        Application.Quit();
     }
 }
