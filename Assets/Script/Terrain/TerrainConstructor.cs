@@ -7,9 +7,11 @@ public class TerrainConstructor : MonoBehaviour
 {
     public Tilemap ground;
     public Tilemap borders;
+    public Tilemap corridor;
 
     public Tile groundTile;
     public Tile borderTile;
+    public Tile corridorTile;
     public Tile redTile;
 
     public int maxRoomWidth = 32;
@@ -151,13 +153,11 @@ public class TerrainConstructor : MonoBehaviour
     private void SpawnRoomCollider(int x, int y, Room room)
     {
         GameObject colliderObject = new GameObject();
-        colliderObject.name = (x * maxRoomWidth) + "," + (y * maxRoomHeight) + "," + (x * maxRoomWidth + maxRoomWidth) + "," + (y * maxRoomHeight + maxRoomHeight);
+        colliderObject.name = (x * maxRoomWidth) + "," + (y * maxRoomHeight) + "," + (x * maxRoomWidth + maxRoomWidth) + "," + (y * maxRoomHeight + maxRoomHeight) + "," + " ";
         BoxCollider2D collider = colliderObject.AddComponent<BoxCollider2D>();
         collider.size = new Vector2(room.tiles.GetLength(0), room.tiles.GetLength(1));
         collider.isTrigger = true;
-
         colliderObject.transform.position = new Vector3(x * maxRoomWidth + room.tiles.GetLength(0) / 2, y * maxRoomHeight + room.tiles.GetLength(1) / 2);
-
         colliderObject.transform.parent = transform;
     }
 
@@ -307,7 +307,7 @@ public class TerrainConstructor : MonoBehaviour
                 {
                     for (int y = start.y - corridorSize; y < start.y + corridorSize; y++)
                     {
-                        ground.SetTile(new Vector3Int(x + offset, y - offset / 2, 0), groundTile);
+                        corridor.SetTile(new Vector3Int(x + offset, y - offset / 2, 0), corridorTile);
                         borders.SetTile(new Vector3Int(x + offset, y - offset / 2, 0), null);
                     }
                 }
