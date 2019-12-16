@@ -25,4 +25,13 @@ public class HandManager : MonoBehaviour
             weapon.GetComponentInChildren<TrailRenderer>().enabled = weapon.GetComponent<Animator>().GetBool("Swing");
         }
     }
+
+    /// <summary>
+    /// Switch the weapon in hand
+    /// </summary>
+    /// <param name="newWeapon">The weapon to put in the hand of the player</param>
+    public void SwitchWeapon(Weapon newWeapon)
+    {
+        weapon = newWeapon;
+    }
 }
