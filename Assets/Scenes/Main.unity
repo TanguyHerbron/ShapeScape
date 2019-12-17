@@ -1693,15 +1693,15 @@ MonoBehaviour:
   borderTile: {fileID: 11400000, guid: d81665a2f58571448ac55eced65506f7, type: 2}
   corridorTile: {fileID: 11400000, guid: 67ee488d9209bcc40acf0e39a24391db, type: 2}
   redTile: {fileID: 11400000, guid: 31504f3f69a31544094b314b8b1fce83, type: 2}
-  maxRoomWidth: 20
-  maxRoomHeight: 20
+  maxRoomWidth: 30
+  maxRoomHeight: 30
   minRoomWidth: 10
   minRoomHeight: 10
-  roomCount: 7
+  roomCount: 12
   smoothing: 15
   randomFillPercentage: 35
   straightCorridor: 1
-  corridorSize: 2
+  corridorSize: 3
   player: {fileID: 4900270296362051093, guid: fd5959d98984e8741b48f892ec3d5b6b, type: 3}
   ally: {fileID: 4900270296362051093, guid: b94a154445a8ef74fa65008d687d257e, type: 3}
   drawRoomCenters: 0
