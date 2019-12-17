@@ -16,10 +16,6 @@ namespace Assets.Entities
             {
                 ApplyDamage(1);
 
-                if (collision.gameObject.CompareTag("Ennemy")) {
-                    ScreenShakeController.instance.StartShake(.6f, .3f);
-                }
-
                 if ( IsDead() )
                 {
                     GameObject.Find("Canvas").transform.Find("DeathPanel").gameObject.SetActive(true);
@@ -28,6 +24,11 @@ namespace Assets.Entities
                 else
                 {
                     StartCoroutine(Invicibility());
+
+                    if (collision.gameObject.CompareTag("Ennemy"))
+                    {
+                        ScreenShakeController.instance.StartShake(.6f, .3f);
+                    }
                 }
             }
         }
