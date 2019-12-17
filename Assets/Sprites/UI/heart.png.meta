@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 7691012faa72edb42b5a35a7c9dc5c22
+guid: aca4bbac0244cce469818d96f663f74a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8173175922574295098
-    second: full_heart
+      213: -943624381097332495
+    second: fullHeart
   - first:
-      213: 1839936456640211576
-    second: half_heart
+      213: -2297991535248738155
+    second: halfHeart
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -92,7 +92,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: full_heart
+      name: fullHeart
       rect:
         serializedVersion: 2
         x: 0
@@ -100,20 +100,20 @@ TextureImporter:
         width: 90
         height: 90
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7d5645518616144ca4a52b4541cdc71
-      internalID: -8173175922574295098
+      spriteID: e8850a213d52cda47863a09c01f946b8
+      internalID: -943624381097332495
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: half_heart
+      name: halfHeart
       rect:
         serializedVersion: 2
         x: 115
@@ -121,14 +121,14 @@ TextureImporter:
         width: 90
         height: 90
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33d7a98e59f8f6b4ea611b99d69a1fa4
-      internalID: 1839936456640211576
+      spriteID: d7c976483b4779e49b710719124803d9
+      internalID: -2297991535248738155
       vertices: []
       indices: 
       edges: []
