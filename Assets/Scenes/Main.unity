@@ -759,9 +759,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Play Again
-
-'
+  m_Text: RESTART
 --- !u!222 &295928873
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -840,7 +838,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Restart
+  m_Text: RESTART
 --- !u!222 &301730991
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1052,7 +1050,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Resume
+  m_Text: RESUME
 --- !u!222 &412386762
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2009,7 +2007,7 @@ RectTransform:
   - {fileID: 1275318741}
   - {fileID: 322896987}
   m_Father: {fileID: 1369949831}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2124,7 +2122,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Restart
+  m_Text: RESTART
 --- !u!222 &974325645
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2379,7 +2377,7 @@ RectTransform:
   - {fileID: 1044448090}
   - {fileID: 862177458}
   m_Father: {fileID: 1369949831}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -2472,7 +2470,7 @@ RectTransform:
   - {fileID: 1204742585}
   - {fileID: 681543948}
   m_Father: {fileID: 1369949831}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2720,7 +2718,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Main Menu
+  m_Text: MAIN MENU
 --- !u!222 &1225073836
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2953,11 +2951,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 503783795}
+  - {fileID: 1061003477}
+  - {fileID: 1446320903}
   - {fileID: 1930114962}
   - {fileID: 1121737463}
   - {fileID: 906340813}
-  - {fileID: 1061003477}
-  - {fileID: 1446320903}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2997,7 +2995,7 @@ RectTransform:
   m_Children:
   - {fileID: 1570047045}
   m_Father: {fileID: 1369949831}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -3112,7 +3110,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Main Menu
+  m_Text: MAIN MENU
 --- !u!222 &1487042384
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3657,7 +3655,7 @@ RectTransform:
   - {fileID: 1016812557}
   - {fileID: 1750952087}
   m_Father: {fileID: 1369949831}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3772,7 +3770,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Main Menu
+  m_Text: MAIN MENU
 --- !u!222 &1932575680
 CanvasRenderer:
   m_ObjectHideFlags: 0
