@@ -1,20 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Weapons
 {
     public class Sword : MeleeWeapon
     {
         public float fireRate;
-        private float timeStamp;
 
         // Start is called before the first frame update
         void Start()
         {
             Name = "Old School";
             FireRate = fireRate;
-            timeStamp = Time.time;
             Ammo = 1;
             MagazineSize = 1;
             TotalAmmo = 1;
@@ -30,7 +26,6 @@ namespace Assets.Weapons
 
         public override void Attack()
         {
-
                 Animator animator = this.GetComponent<Animator>();
                 animator.SetTrigger("Swing");
         }
