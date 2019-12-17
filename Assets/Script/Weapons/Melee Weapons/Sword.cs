@@ -30,13 +30,9 @@ namespace Assets.Weapons
 
         public override void Attack()
         {
-            if( timeStamp + fireRate < Time.time )
-            {
+
                 Animator animator = this.GetComponent<Animator>();
-                animator.SetBool("Swing", true);
-                timeStamp = Time.time;
-            }
-            
+                animator.SetTrigger("Swing");
         }
     }
 }
