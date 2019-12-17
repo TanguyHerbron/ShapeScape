@@ -3053,7 +3053,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 425327947}
-        m_MethodName: Restart
+        m_MethodName: ReloadCurrentScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
