@@ -13,7 +13,6 @@ public class DummyBehaviour : Ennemy
         Name = "Dummy";
         HP = 5;
         Speed = DummySpeed;
-        Weapon = new Fist();
 
         RigidBody = GetComponent<Rigidbody2D>();
     }

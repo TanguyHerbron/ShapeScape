@@ -14,7 +14,6 @@ public class Beserker: Ennemy
         Name = "Beserker";
         HP = 5;
         Speed = beserkerSpeed;
-        Weapon = new Fist();
 
         RigidBody = GetComponent<Rigidbody2D>();
 

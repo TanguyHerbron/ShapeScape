@@ -89,7 +89,7 @@ public class TerrainConstructor : MonoBehaviour
             }
         }
 
-        int randomIndex = Random.Range(0, spawnableTiles.Count);
+        int randomIndex = Random.Range(0, spawnableTiles.Count - 1);
 
         return new Vector2(spawnableTiles[randomIndex].x + roomIndex.x * maxRoomWidth + 0.5f, spawnableTiles[randomIndex].y + roomIndex.y * maxRoomHeight + 0.5f);
     }
