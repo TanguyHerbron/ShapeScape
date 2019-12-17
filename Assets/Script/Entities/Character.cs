@@ -10,12 +10,13 @@ namespace Assets.Entities
         /// Collision detector
         /// Checks if the object colliding with the player should or not apply damage
         /// </summary>
-        /// <param name="collision"></param>
+        /// <param name="collision">The collider colliding with the player</param>
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if ( ( collision.gameObject.CompareTag("Melee Weapon") || collision.gameObject.CompareTag("Ennemy") ) && !Invicible )
+            if ( collision.gameObject.CompareTag("Ennemy") && !Invicible)
             {
-                ApplyDamage(1);
+                Weapon weapon = collision.gameObject.GetComponent<HandManager>().weapon;
+                ApplyDamage(weapon.Damage);
 
                 if ( IsDead() )
                 {
@@ -25,18 +26,18 @@ namespace Assets.Entities
                 else
                 {
                     StartCoroutine(Invicibility());
-
-                    if (collision.gameObject.CompareTag("Ennemy"))
-                    {
-                        ScreenShakeController.instance.StartShake(.6f, .3f);
-                    }
+                    ScreenShakeController.instance.StartShake(.6f, .3f);
                 }
             }
         }
 
+        /// <summary>
+        /// Trigger Detector
+        /// </summary>
+        /// <param name="collision">The collider colliding with the player</param>
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Weapon"))
+            if (collision.gameObject.CompareTag("Weapon") && !Invicible )
             {
                 Weapon weapon = collision.gameObject.GetComponent<Weapon>();
                 ApplyDamage(weapon.Damage);
@@ -49,6 +50,7 @@ namespace Assets.Entities
                 else
                 {
                     StartCoroutine(Invicibility());
+                    ScreenShakeController.instance.StartShake(.6f, .3f);
                 }
             }
         }
