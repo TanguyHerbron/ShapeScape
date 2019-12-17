@@ -8,7 +8,7 @@ namespace Assets.Weapons
     public class Weapon : MonoBehaviour, IWeapon
     {
         private int id;
-        private string name;
+        private new string name;
         private float damage;
         private float fireRate;
         private float range;

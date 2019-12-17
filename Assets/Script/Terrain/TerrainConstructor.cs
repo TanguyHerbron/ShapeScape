@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class TerrainConstructor : MonoBehaviour
 {
+    public static TerrainConstructor instance;
+
     public Tilemap ground;
     public Tilemap borders;
     public Tilemap corridor;
@@ -48,6 +50,8 @@ public class TerrainConstructor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
+
         GenerateRooms();
 
         ArrangeRooms();
@@ -65,8 +69,42 @@ public class TerrainConstructor : MonoBehaviour
 
         SpawnExit(spawnPos);
 
-        Instantiate(player, new Vector3(spawnPos.x, spawnPos.y), Quaternion.identity);
-        Instantiate(ally, new Vector3(spawnPos.x + Random.Range(1, 3), spawnPos.y + Random.Range(1, 3)), Quaternion.identity);
+        InstantiatePlayables(spawnPos);
+    }
+
+    public Vector2 GetRandomSpawnableTile(Vector2Int roomIndex)
+    {
+        Room spawnedRoom = roomList[roomIndex.x, roomIndex.y];
+
+        List<Vector2Int> spawnableTiles = new List<Vector2Int>();
+
+        for (int x = 0; x < spawnedRoom.tiles.GetLength(0); x++)
+        {
+            for (int y = 0; y < spawnedRoom.tiles.GetLength(1); y++)
+            {
+                if (spawnedRoom.tiles[x, y] == 0)
+                {
+                    spawnableTiles.Add(new Vector2Int(x, y));
+                }
+            }
+        }
+
+        int randomIndex = Random.Range(0, spawnableTiles.Count);
+
+        return new Vector2(spawnableTiles[randomIndex].x + roomIndex.x * maxRoomWidth + 0.5f, spawnableTiles[randomIndex].y + roomIndex.y * maxRoomHeight + 0.5f);
+    }
+
+    private void InstantiatePlayables(Vector2Int roomCenterPos)
+    {
+        Vector2Int roomIndex = new Vector2Int(roomCenterPos.x / maxRoomWidth, roomCenterPos.y / maxRoomHeight);
+
+        Vector2 spawnableTile = GetRandomSpawnableTile(roomIndex);
+
+        Instantiate(player, new Vector3(spawnableTile.x, spawnableTile.y), Quaternion.identity);
+
+        spawnableTile = GetRandomSpawnableTile(roomIndex);
+
+        Instantiate(ally, new Vector3(spawnableTile.x, spawnableTile.y), Quaternion.identity);
     }
 
     /// <summary>
@@ -156,7 +194,7 @@ public class TerrainConstructor : MonoBehaviour
     {
         GameObject roomGameObject = new GameObject();
 
-        roomGameObject.name = (x * maxRoomWidth) + "," + (y * maxRoomHeight) + "," + (x * maxRoomWidth + maxRoomWidth) + "," + (y * maxRoomHeight + maxRoomHeight);
+        roomGameObject.name = x + "," + y;
         roomGameObject.AddComponent<RoomManager>();
 
         BoxCollider2D collider = roomGameObject.AddComponent<BoxCollider2D>();

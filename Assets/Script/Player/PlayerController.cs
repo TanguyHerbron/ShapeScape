@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(movement * player.Speed);
         }
 
-        //rb.MovePosition(rb.position + movement * player.Speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * player.Speed * Time.fixedDeltaTime);
     }
 
     /// <summary>

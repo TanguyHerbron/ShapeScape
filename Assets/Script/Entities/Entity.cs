@@ -15,7 +15,7 @@ namespace Assets.Entities
         private float speed;
         private bool invicible = false;
         private bool damaged = false;
-        private string name;
+        private new string name;
         private Rigidbody2D rigidBody;
         private Weapon weapon;
 

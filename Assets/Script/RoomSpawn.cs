@@ -11,30 +11,25 @@ public class RoomSpawn : MonoBehaviour
     public int minEnnemies;                     // Minimum of ennemies to be spawned per room
     public int maxEnnemies;                     // Maximum of ennemies to be spawned per room
 
-    private Tilemap groundMap;
+    private TerrainConstructor terrainConstructor;
 
     public void Start()
     {
-        groundMap = GameObject.Find("Ground").GetComponent<Tilemap>();
+        terrainConstructor = TerrainConstructor.instance;
     }
 
     /// <summary>
     /// Spawn an ennemy at a random location inside the boundaries
     /// </summary>
-    public void SpawnEnnemies(int xMin, int xMax, int yMin, int yMax)
+    public void SpawnEnnemies(int x, int y)
     {
         int nbOfSpawn = Random.Range(minEnnemies, maxEnnemies + 1);
         
         for(int i =0; i < nbOfSpawn; i++ )
         {
-            int xPos = Random.Range(xMin, xMax);
-            int yPos = Random.Range(yMin, yMax);
+            Vector2 spawn = terrainConstructor.GetRandomSpawnableTile(new Vector2Int(x, y));
 
-            if(groundMap.GetTile(new Vector3Int(xPos, yPos, 0)) != null)
-            {
-                Vector3 pos = new Vector3(xPos, yPos, 0);
-                Instantiate(Ennemies[Random.Range(0, Ennemies.Length)], pos, new Quaternion());
-            }
+            Instantiate(Ennemies[Random.Range(0, Ennemies.Length)], new Vector3(spawn.x, spawn.y), new Quaternion());
         }
     }
 }

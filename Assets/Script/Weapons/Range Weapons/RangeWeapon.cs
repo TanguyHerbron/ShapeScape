@@ -7,21 +7,6 @@ namespace Assets.Weapons
 {
     public class RangeWeapon : Weapon
     {
-        private int ammo;
-
-        public int Ammo
-        {
-            get
-            {
-                return ammo;
-            }
-
-            set
-            {
-                ammo = value;
-            }
-        }
-
         /// <summary>
         /// 
         /// </summary>

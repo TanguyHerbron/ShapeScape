@@ -28,9 +28,7 @@ public class RoomManager : MonoBehaviour
             {
                 // spawns ennemies
                 spawn.SpawnEnnemies(System.Convert.ToInt32(coords[0]),
-                                    System.Convert.ToInt32(coords[2]),
-                                    System.Convert.ToInt32(coords[1]),
-                                    System.Convert.ToInt32(coords[3]));
+                                    System.Convert.ToInt32(coords[1]));
 
                 roomEntered = true;
             }
