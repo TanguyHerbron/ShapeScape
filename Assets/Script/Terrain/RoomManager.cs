@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    private bool roomEntered;
+    public bool roomEntered;
 
     public void Start()
     {

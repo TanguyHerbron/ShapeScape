@@ -105,6 +105,8 @@ public class TerrainConstructor : MonoBehaviour
         spawnableTile = GetRandomSpawnableTile(roomIndex);
 
         Instantiate(ally, new Vector3(spawnableTile.x, spawnableTile.y), Quaternion.identity);
+
+        transform.Find(roomIndex.x + "," + roomIndex.y).GetComponent<RoomManager>().roomEntered = true;
     }
 
     /// <summary>
