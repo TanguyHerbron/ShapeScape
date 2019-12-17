@@ -24,7 +24,7 @@ public class AllyHealthDisplayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if( currentHealth > ally.HP )
+        if( !ally.IsDead() && currentHealth > ally.HP )
         {
             spriteRenderer.sprite = allySprites[(int) ally.HP - 1];
             currentHealth = ally.HP;

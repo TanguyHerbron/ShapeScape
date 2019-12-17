@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Assets.Entities
+﻿namespace Assets.Entities
 {
     public class Ennemy : Entity
     {

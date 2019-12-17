@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 961610534742077493}
   - component: {fileID: 961610534742077492}
   - component: {fileID: 961610534742077643}
-  - component: {fileID: 961610534742077642}
   - component: {fileID: -3541712812424807889}
   - component: {fileID: -8964112303494197803}
+  - component: {fileID: 961610534742077642}
+  - component: {fileID: 4274352086999887063}
   m_Layer: 10
   m_Name: Beserker
   m_TagString: Ennemy
@@ -133,20 +134,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.015625, y: 1}
   m_EdgeRadius: 0
---- !u!114 &961610534742077642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961610534742077641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fc18df801cab6d41ae095d3b4cb84cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usePathFinder: 1
-  beserkerSpeed: 220
 --- !u!198 &-3541712812424807889
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4928,3 +4915,30 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &961610534742077642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961610534742077641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc18df801cab6d41ae095d3b4cb84cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usePathFinder: 1
+  beserkerSpeed: 220
+--- !u!114 &4274352086999887063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961610534742077641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e5b6f37086c2b488677f37fdff5319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: -154506933656157001, guid: 2b4c5dc622ef3b04c96e08648a5ab705, type: 3}

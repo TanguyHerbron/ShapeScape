@@ -18,6 +18,7 @@ namespace Assets.Weapons
             Ammo = 1;
             MagazineSize = 1;
             TotalAmmo = 1;
+            Damage = 3;
             Sprite = this.GetComponent<SpriteRenderer>().sprite;
         }
 

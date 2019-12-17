@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
+using Assets.Weapons;
 
 namespace Assets.Entities
 {
@@ -16,6 +17,7 @@ namespace Assets.Entities
         private bool damaged = false;
         private string name;
         private Rigidbody2D rigidBody;
+        private Weapon weapon;
 
         private List<Location> path;
 
@@ -103,6 +105,8 @@ namespace Assets.Entities
         }
 
         public Rigidbody2D RigidBody { get => rigidBody; set => rigidBody= value; }
+        public Weapon Weapon { get => weapon; set => weapon= value; }
+
 
         /// <summary>
         /// Checks if the character is dead

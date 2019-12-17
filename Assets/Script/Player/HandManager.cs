@@ -20,7 +20,7 @@ public class HandManager : MonoBehaviour
             oldWeapon = weapon;
         }
 
-        if ( weapon.GetComponentInChildren<TrailRenderer>() )
+        if (weapon.GetComponentInChildren<TrailRenderer>() && weapon.GetComponent<Animator>())
         {
             weapon.GetComponentInChildren<TrailRenderer>().enabled = weapon.GetComponent<Animator>().GetBool("Swing");
         }

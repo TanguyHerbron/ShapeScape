@@ -14,6 +14,7 @@ public class Beserker: Ennemy
         Name = "Beserker";
         HP = 5;
         Speed = beserkerSpeed;
+        Weapon = new Fist();
 
         RigidBody = GetComponent<Rigidbody2D>();
 
@@ -57,7 +58,7 @@ public class Beserker: Ennemy
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Melee Weapon"))
+        if (collision.gameObject.CompareTag("Weapon"))
         {
             GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<SpriteRenderer>().enabled = false;

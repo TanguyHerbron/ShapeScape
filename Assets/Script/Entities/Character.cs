@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Entities
@@ -29,6 +29,25 @@ namespace Assets.Entities
                     {
                         ScreenShakeController.instance.StartShake(.6f, .3f);
                     }
+                }
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Weapon"))
+            {
+                Weapon weapon = collision.gameObject.GetComponent<Weapon>();
+                ApplyDamage(weapon.Damage);
+
+                if (IsDead())
+                {
+                    GameObject.Find("Canvas").transform.Find("DeathPanel").gameObject.SetActive(true);
+                    Time.timeScale = 0.0f;
+                }
+                else
+                {
+                    StartCoroutine(Invicibility());
                 }
             }
         }
