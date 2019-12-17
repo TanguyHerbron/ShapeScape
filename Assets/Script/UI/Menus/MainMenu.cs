@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Generation_Tester");
     }
     
     /// <summary>
