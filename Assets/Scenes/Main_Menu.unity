@@ -390,7 +390,7 @@ MonoBehaviour:
     m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 0
     m_MaxSize: 72
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -398,9 +398,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Play
-
-'
+  m_Text: PLAY
 --- !u!222 &261997039
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -562,9 +560,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Settings
-
-'
+  m_Text: SETTINGS
 --- !u!222 &484772034
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1509,7 +1505,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Exit Game
+  m_Text: EXIT GAME
 --- !u!222 &1152872894
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1588,7 +1584,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Mission #2'
+  m_Text: 'MISSION #2'
 --- !u!222 &1194656545
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1667,7 +1663,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Back
+  m_Text: BACK
 --- !u!222 &1225929702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2051,7 +2047,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Mission #1'
+  m_Text: 'MISSION #1'
 --- !u!222 &2110972528
 CanvasRenderer:
   m_ObjectHideFlags: 0
